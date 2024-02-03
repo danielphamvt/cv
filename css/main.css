@@ -996,7 +996,7 @@ h6 em {
 .mobile * {
     text-shadow: none !important;
 }
-.mobile #avatar {
+.mobile .avatar {
     width: 80px;
     height: 80px;
     border: 0;
