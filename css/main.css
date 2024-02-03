@@ -184,10 +184,20 @@ ul {
     clear: both
 }
 
-#avatar {
+.avatar {
     width: 268px;
     height: 268px;
     border: 10px solid #aee2d9;
+    -webkit-border-radius: 50%;
+    -moz-border-radius: 50%;
+    -o-border-radius: 50%;
+    border-radius: 50%
+}
+
+.avatar-small {
+    width: 100px;
+    height: 100px;
+    border: 6px solid #aee2d9;
     -webkit-border-radius: 50%;
     -moz-border-radius: 50%;
     -o-border-radius: 50%;
@@ -339,22 +349,23 @@ ul {
     border-radius: 5px
 }
 
-.social-share-element.social-twitter {
-    background-position: 0px 40px
-}
-
-.social-share-element.social-facebook {
-    background-position: -120px 40px
-}
-
 
 .social-share-element.social-linkedin {
-    background-position: -80px 40px
+    background-position: 0px 40px
 }
 
 
 .social-share-element.social-github {
     background-position: -40px 40px
+}
+
+
+.social-share-element.social-twitter {
+    background-position: -80px 40px
+}
+
+.social-share-element.social-facebook {
+    background-position: -120px 40px
 }
 
 .social-share-text {
