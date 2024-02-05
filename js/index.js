@@ -7,15 +7,14 @@ window.mobilecheck = function() {
 $(document).ready(function() {
     if (mobilecheck()) {
         $('html').addClass('mobile');
-    } else {
-        var en = ['Home', 'Education', 'Professions', 'Skill',
-                'Publication', 'Current Position', 'Contact Me'];
-        var fr = ['Accueil', 'Éducation', 'Professions', 'Compétence',
-          'Publication', 'Poste Actuel', 'Me Contacter'];
-        var vi = ['Trang chủ', 'Học vấn', 'Kinh nghiệm làm việc', 'Kỹ năng', 'Xuất bản', 'Vị trí hiện tại', 'Thông tin bổ sung'];
-        var isEn = window.location.href.indexOf('cvi.html') >= 0;
-        var isFr = window.location.href.indexOf('fr.html') >= 0;
     }
+    var en = ['Home', 'Education', 'Professions', 'Skill',
+            'Publication', 'Current Position', 'Contact Me'];
+    var fr = ['Accueil', 'Éducation', 'Professions', 'Compétence',
+      'Publication', 'Poste Actuel', 'Me Contacter'];
+    var vi = ['Trang chủ', 'Học vấn', 'Kinh nghiệm làm việc', 'Kỹ năng', 'Xuất bản', 'Vị trí hiện tại', 'Thông tin bổ sung'];
+    var isEn = window.location.href.indexOf('cvi.html') >= 0;
+    var isFr = window.location.href.indexOf('fr.html') >= 0;
     $('.section').addClass('initing');
         $('#pagepiling').pagepiling({
             loopBottom: true,
