@@ -10,14 +10,18 @@ $(document).ready(function() {
     } else {
         var en = ['Home', 'Education', 'Professions', 'Skill',
                 'Publication', 'Current Position', 'Contact Me'];
-        var cn = ['首页', '项目', '技能', '教育', '实习', '供职', '联系'];
-        var isCn = window.location.href.indexOf('cn.html') >= 0;
-        $('.section').addClass('initing');
+        var fr = ['Accueil', 'Éducation', 'Professions', 'Compétence',
+          'Publication', 'Poste Actuel', 'Me Contacter'];
+        var vi = ['Trang chủ', 'Học vấn', 'Kinh nghiệm làm việc', 'Kỹ năng', 'Xuất bản', 'Vị trí hiện tại', 'Thông tin bổ sung'];
+        var isEn = window.location.href.indexOf('cvi.html') >= 0;
+        var isFr = window.location.href.indexOf('fr.html') >= 0;
+    }
+    $('.section').addClass('initing');
         $('#pagepiling').pagepiling({
             loopBottom: true,
             navigation: {
                 'position': 'left',
-                'tooltips': isCn ? cn : en
+                'tooltips': isEn ? vi : isFr ? fr : en
             },
             onLeave: function(index, nextIndex, direction) {
                 var $pages = $('.section');
@@ -31,5 +35,4 @@ $(document).ready(function() {
             }
         });
         $('.initing').removeClass('initing');
-    }
 });

@@ -320,33 +320,48 @@ h6 em {
     border: 0;
 }
 .mobile .circle-img {
-    margin: 20px 10px;
+    display: None;
+}
+.circle-img:hover {
+    opacity: 0.8;
 }
 .mobile h1 {
-    font-size: 2.4em;
+    font-size: 1.25em;
 }
 .mobile h2 {
-    font-size: 1.4em;
+    font-size: 1.0em;
 }
 .mobile h3 {
-    font-size: 1.125em;
+    font-size: 0.8em;
 }
 .mobile h4 {
-    font-size: 0.9375em;
+    font-size: 0.75em;
 }
 .mobile h5 {
-    font-size: 0.9em;
+    font-size: 0.72em;
 }
 .mobile h6 {
-    font-size: 0.825em;
+    font-size: 0.8em;
 }
 .mobile p,
 .mobile ul {
-    font-size: 0.88em;
+    font-size: 0.8em;
 }
 .mobile .section {
     padding: 50px 10px;
 }
 .mobile #profession.section.center {
     text-align: left;
+}
+
+.mobile  #lang-panel,
+.mobile #lang-panel .lang {
+    border-radius: 2px;
+}
+
+.mobile  #lang-panel .lang,
+.mobile .tag {
+    display: inline-block;
+    padding: 1px 4px;
+    font-size: 0.8em;
 }
