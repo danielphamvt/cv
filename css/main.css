@@ -336,7 +336,8 @@ h5 {
     color: var(--text-secondary);
     margin-bottom: 2rem;
     font-weight: 400;
-    min-height: 3rem;
+    min-height: 5.5rem;
+    /* Increased to fit 2 lines */
     display: flex;
     align-items: center;
 }
