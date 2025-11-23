@@ -786,7 +786,34 @@
         <div class="container">
             <p>&copy; 2025 Van Tuan PHAM. Built with <i class="fas fa-heart text-accent"></i> and AI.</p>
         </div>
+        <div class="visitor-counter" id="visitor-counter">
+            <i class="fas fa-eye"></i> <span id="visit-count">0</span>
+        </div>
     </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            // Integrate CountAPI - A safe, simple, and free counter API
+            // This allows us to keep the custom styling while using a real backend service
+            const counterElement = document.getElementById('visit-count');
+
+            // Using a unique key for this website based on the domain
+            // If this is the first time, it will create the key and start at 0 (or 1)
+            // We use 'hit' to increment. Use 'get' to just read.
+            // Namespace: danielphamvt.github.io, Key: cv_visits
+            fetch('https://api.countapi.xyz/hit/danielphamvt.github.io/cv_visits')
+                .then(res => res.json())
+                .then(data => {
+                    // Format with commas
+                    counterElement.textContent = data.value.toLocaleString();
+                })
+                .catch(err => {
+                    console.log('Counter API error:', err);
+                    // Fallback to a generic number or keep 0 if offline
+                    counterElement.textContent = "1+";
+                });
+        });
+    </script>
 
     <!-- Scripts -->
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
