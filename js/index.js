@@ -95,4 +95,25 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
     });
+
+    // Scroll to Top Button
+    const scrollTopBtn = document.getElementById('scrollTop');
+
+    if (scrollTopBtn) {
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 500) {
+                scrollTopBtn.classList.add('active');
+            } else {
+                scrollTopBtn.classList.remove('active');
+            }
+        });
+
+        scrollTopBtn.addEventListener('click', (e) => {
+            e.preventDefault();
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+    }
 });
