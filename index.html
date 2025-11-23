@@ -787,48 +787,49 @@
             <p>&copy; 2025 Van Tuan PHAM. Built with <i class="fas fa-heart text-accent"></i> and AI.</p>
         </div>
         <div class="visitor-counter" id="visitor-counter">
-            <i class="fas fa-eye"></i> <span id="visit-count">0</span>
+            <i class="fas fa-eye"></i>
+            <span id="visit-count">15,420</span>
+            <span id="busuanzi_value_site_pv" style="display:none;"></span>
         </div>
     </footer>
 
+    <!-- Busuanzi Visitor Counter -->
+    <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
     <script>
         document.addEventListener('DOMContentLoaded', function () {
-            const counterElement = document.getElementById('visit-count');
-            const baseCount = 15420; // Base count to look professional
+            const baseCount = 15420; // Base count offset
+            const displayElement = document.getElementById('visit-count');
+            const sourceElement = document.getElementById('busuanzi_value_site_pv');
 
-            // Function to update display
-            const updateDisplay = (count) => {
-                counterElement.textContent = count.toLocaleString();
+            // Function to update the display with offset
+            const updateCounter = () => {
+                let realCount = parseInt(sourceElement.innerText.replace(/,/g, '')) || 0;
+
+                // Fix for Localhost/File protocol:
+                // Busuanzi shares a counter for all localhost/file users, resulting in millions of hits.
+                // If the count is suspiciously high (> 500,000) and we are likely testing, ignore it.
+                if (realCount > 500000) {
+                    console.log("Detected shared localhost counter (too high), using base count only.");
+                    realCount = 1; // Treat as first visit
+                }
+
+                if (realCount > 0) {
+                    displayElement.textContent = (baseCount + realCount).toLocaleString();
+                }
             };
 
-            // Try to get data from CounterAPI.dev (more stable than countapi.xyz)
-            // Namespace: danielphamvt, Key: cv
-            fetch('https://api.counterapi.dev/v1/danielphamvt/cv/up')
-                .then(res => {
-                    if (!res.ok) throw new Error('API Error');
-                    return res.json();
-                })
-                .then(data => {
-                    // Check if data.count exists, otherwise fallback
-                    if (data.count) {
-                        updateDisplay(baseCount + data.count);
-                    } else {
-                        throw new Error('Invalid Data');
-                    }
-                })
-                .catch(err => {
-                    console.log('Counter API error, falling back to local storage:', err);
+            // Observer to watch for Busuanzi updates
+            const observer = new MutationObserver(updateCounter);
 
-                    // Fallback: LocalStorage simulation
-                    let localCount = localStorage.getItem('visitorCount') || 0;
-                    localCount = parseInt(localCount) + 1;
-                    localStorage.setItem('visitorCount', localCount);
-                    updateDisplay(baseCount + localCount);
-                });
+            if (sourceElement) {
+                observer.observe(sourceElement, { childList: true, characterData: true, subtree: true });
+            }
+
+            // Initial check in case it loads instantly
+            updateCounter();
         });
     </script>
-
-    <!-- Scripts -->
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script src="https://unpkg.com/typed.js@2.0.16/dist/typed.umd.js"></script>
     <script src="js/index.js"></script>
