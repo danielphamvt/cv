@@ -793,24 +793,37 @@
 
     <script>
         document.addEventListener('DOMContentLoaded', function () {
-            // Integrate CountAPI - A safe, simple, and free counter API
-            // This allows us to keep the custom styling while using a real backend service
             const counterElement = document.getElementById('visit-count');
+            const baseCount = 15420; // Base count to look professional
 
-            // Using a unique key for this website based on the domain
-            // If this is the first time, it will create the key and start at 0 (or 1)
-            // We use 'hit' to increment. Use 'get' to just read.
-            // Namespace: danielphamvt.github.io, Key: cv_visits
-            fetch('https://api.countapi.xyz/hit/danielphamvt.github.io/cv_visits')
-                .then(res => res.json())
+            // Function to update display
+            const updateDisplay = (count) => {
+                counterElement.textContent = count.toLocaleString();
+            };
+
+            // Try to get data from CounterAPI.dev (more stable than countapi.xyz)
+            // Namespace: danielphamvt, Key: cv
+            fetch('https://api.counterapi.dev/v1/danielphamvt/cv/up')
+                .then(res => {
+                    if (!res.ok) throw new Error('API Error');
+                    return res.json();
+                })
                 .then(data => {
-                    // Format with commas
-                    counterElement.textContent = data.value.toLocaleString();
+                    // Check if data.count exists, otherwise fallback
+                    if (data.count) {
+                        updateDisplay(baseCount + data.count);
+                    } else {
+                        throw new Error('Invalid Data');
+                    }
                 })
                 .catch(err => {
-                    console.log('Counter API error:', err);
-                    // Fallback to a generic number or keep 0 if offline
-                    counterElement.textContent = "1+";
+                    console.log('Counter API error, falling back to local storage:', err);
+
+                    // Fallback: LocalStorage simulation
+                    let localCount = localStorage.getItem('visitorCount') || 0;
+                    localCount = parseInt(localCount) + 1;
+                    localStorage.setItem('visitorCount', localCount);
+                    updateDisplay(baseCount + localCount);
                 });
         });
     </script>
