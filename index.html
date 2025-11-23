@@ -21,7 +21,7 @@
 
     <!-- Twitter -->
     <meta property="twitter:card" content="summary_large_image">
-    <meta property="twitter:url" content="https://danielphamvt.github.io/">
+    <meta property="twitter:url" content="https://danielphamvt.github.io/cv">
     <meta property="twitter:title" content="Van Tuan PHAM | Full-stack Data Scientist & AI Researcher">
     <meta property="twitter:description"
         content="Ph.D. in Computer Science with 10+ years of experience building scalable production AI systems.">
@@ -781,7 +781,6 @@
         </div>
     </section>
 
-    <!-- Footer -->
     <footer class="footer">
         <div class="container">
             <p>&copy; 2025 Van Tuan PHAM. Built with <i class="fas fa-heart text-accent"></i> and AI.</p>
@@ -793,40 +792,27 @@
         </div>
     </footer>
 
-    <!-- Busuanzi Visitor Counter -->
     <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
 
     <script>
         document.addEventListener('DOMContentLoaded', function () {
-            const baseCount = 15420; // Base count offset
+            const baseCount = 1000;
             const displayElement = document.getElementById('visit-count');
             const sourceElement = document.getElementById('busuanzi_value_site_pv');
 
-            // Function to update the display with offset
             const updateCounter = () => {
-                let realCount = parseInt(sourceElement.innerText.replace(/,/g, '')) || 0;
-
-                // Fix for Localhost/File protocol:
-                // Busuanzi shares a counter for all localhost/file users, resulting in millions of hits.
-                // If the count is suspiciously high (> 500,000) and we are likely testing, ignore it.
-                if (realCount > 500000) {
-                    console.log("Detected shared localhost counter (too high), using base count only.");
-                    realCount = 1; // Treat as first visit
-                }
-
+                const realCount = parseInt(sourceElement.innerText.replace(/,/g, '')) || 0;
                 if (realCount > 0) {
                     displayElement.textContent = (baseCount + realCount).toLocaleString();
                 }
             };
 
-            // Observer to watch for Busuanzi updates
             const observer = new MutationObserver(updateCounter);
 
             if (sourceElement) {
                 observer.observe(sourceElement, { childList: true, characterData: true, subtree: true });
             }
 
-            // Initial check in case it loads instantly
             updateCounter();
         });
     </script>
