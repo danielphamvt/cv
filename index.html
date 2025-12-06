@@ -33,7 +33,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link
-        href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap"
+        href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=Outfit:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap"
         rel="stylesheet">
 
     <!-- AOS Animation Library -->
@@ -58,7 +58,7 @@
     <nav class="navbar">
         <div class="container nav-content">
             <a href="#" class="logo">V.T.<span class="text-accent"> PHAM</span></a>
-            <div class="menu-toggle" id="mobile-menu">
+            <div class="menu-toggle" id="mobile-menu" aria-expanded="false" aria-label="Toggle navigation menu">
                 <span class="bar"></span>
                 <span class="bar"></span>
                 <span class="bar"></span>
@@ -70,6 +70,10 @@
                 <a href="#projects" class="nav-link">Projects</a>
                 <a href="#qualifications" class="nav-link">Qualifications</a>
                 <a href="#contact" class="btn-nav">Contact Me</a>
+                <!-- Theme Toggle -->
+                <button id="theme-toggle" class="theme-btn" aria-label="Toggle Dark Mode">
+                    <i class="fas fa-moon"></i>
+                </button>
             </div>
         </div>
     </nav>
@@ -92,15 +96,15 @@
                 </p>
                 <div class="hero-btns">
                     <a href="#experience" class="btn btn-primary"><i class="fas fa-briefcase"></i> View Experience</a>
-                    <a href="Machine learning researcher PHAM Van Tuan.pdf" target="_blank" class="btn btn-3d"><i
-                            class="fas fa-download"></i> Download CV</a>
+                    <a href="Machine learning researcher PHAM Van Tuan.pdf" target="_blank" rel="noopener noreferrer"
+                        class="btn btn-3d"><i class="fas fa-download"></i> Download CV</a>
                 </div>
 
                 <div class="social-links">
-                    <a href="https://www.linkedin.com/in/danielphamvt/" target="_blank" aria-label="LinkedIn"><i
-                            class="fab fa-linkedin-in"></i></a>
-                    <a href="https://github.com/danielphamvt" target="_blank" aria-label="GitHub"><i
-                            class="fab fa-github"></i></a>
+                    <a href="https://www.linkedin.com/in/danielphamvt/" target="_blank" rel="noopener noreferrer"
+                        aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                    <a href="https://github.com/danielphamvt" target="_blank" rel="noopener noreferrer"
+                        aria-label="GitHub"><i class="fab fa-github"></i></a>
                     <a href="mailto:phamtuantkt@gmail.com" aria-label="Email"><i class="fas fa-envelope"></i></a>
                 </div>
             </div>
@@ -757,20 +761,22 @@
                     <div class="pub-card">
                         <h5>A Block Coordinate DCA Approach for Large-Scale Kernel SVM</h5>
                         <p class="pub-meta">ICCCI 2022, Springer</p>
-                        <a href="https://doi.org/10.1007/978-3-031-16014-1_27" target="_blank" class="pub-link">View DOI
+                        <a href="https://doi.org/10.1007/978-3-031-16014-1_27" target="_blank" rel="noopener noreferrer"
+                            class="pub-link">View DOI
                             <i class="fas fa-external-link-alt"></i></a>
                     </div>
                     <div class="pub-card">
                         <h5>DCA-Based Weighted Bagging: A New Ensemble Learning Approach</h5>
                         <p class="pub-meta">ACIIDS 2023, Springer</p>
-                        <a href="https://doi.org/10.1007/978-981-99-5837-5_11" target="_blank" class="pub-link">View DOI
+                        <a href="https://doi.org/10.1007/978-981-99-5837-5_11" target="_blank" rel="noopener noreferrer"
+                            class="pub-link">View DOI
                             <i class="fas fa-external-link-alt"></i></a>
                     </div>
                     <div class="pub-card">
                         <h5>Techniques d’apprentissage automatique basées sur DCA</h5>
                         <p class="pub-meta">Thesis Publication, 2023</p>
                         <a href="https://docnum.univ-lorraine.fr/public/DDOC_T_2023_0219_PHAM.pdf" target="_blank"
-                            class="pub-link">View PDF
+                            rel="noopener noreferrer" class="pub-link">View PDF
                             <i class="fas fa-external-link-alt"></i></a>
                     </div>
                 </div>
@@ -792,16 +798,17 @@
             </a>
 
             <div class="social-connect">
-                <a href="https://www.linkedin.com/in/danielphamvt/" target="_blank" class="social-icon"><i
-                        class="fab fa-linkedin-in"></i></a>
-                <a href="https://github.com/danielphamvt" target="_blank" class="social-icon"><i
-                        class="fab fa-github"></i></a>
-                <a href="https://twitter.com/TuanPham_NEU" target="_blank" class="social-icon"><i
-                        class="fab fa-twitter"></i></a>
+                <a href="https://www.linkedin.com/in/danielphamvt/" target="_blank" rel="noopener noreferrer"
+                    class="social-icon"><i class="fab fa-linkedin-in"></i></a>
+                <a href="https://github.com/danielphamvt" target="_blank" rel="noopener noreferrer"
+                    class="social-icon"><i class="fab fa-github"></i></a>
+                <a href="https://twitter.com/TuanPham_NEU" target="_blank" rel="noopener noreferrer"
+                    class="social-icon"><i class="fab fa-twitter"></i></a>
             </div>
 
             <div class="footer-download">
-                <a href="Machine learning researcher PHAM Van Tuan.pdf" target="_blank" class="btn btn-outline-glow">
+                <a href="Machine learning researcher PHAM Van Tuan.pdf" target="_blank" rel="noopener noreferrer"
+                    class="btn btn-outline-glow">
                     <i class="fas fa-file-pdf"></i> Download Full Resume
                 </a>
             </div>
@@ -815,7 +822,7 @@
 
     <footer class="footer">
         <div class="container">
-            <p>&copy; 2025 Van Tuan PHAM. Built with <i class="fas fa-heart text-accent"></i> and AI.</p>
+            <p>&copy; 2025 Van Tuan PHAM. Built with <i class="fas fa-heart text-accent"></i>.</p>
         </div>
         <div class="visitor-counter" id="visitor-counter">
             <i class="fas fa-eye"></i>
@@ -824,30 +831,8 @@
         </div>
     </footer>
 
-    <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
 
-    <script>
-        document.addEventListener('DOMContentLoaded', function () {
-            const baseCount = 1000;
-            const displayElement = document.getElementById('visit-count');
-            const sourceElement = document.getElementById('busuanzi_value_site_pv');
-
-            const updateCounter = () => {
-                const realCount = parseInt(sourceElement.innerText.replace(/,/g, '')) || 0;
-                if (realCount > 0) {
-                    displayElement.textContent = (baseCount + realCount).toLocaleString();
-                }
-            };
-
-            const observer = new MutationObserver(updateCounter);
-
-            if (sourceElement) {
-                observer.observe(sourceElement, { childList: true, characterData: true, subtree: true });
-            }
-
-            updateCounter();
-        });
-    </script>
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script src="https://unpkg.com/typed.js@2.0.16/dist/typed.umd.js"></script>
     <script src="js/index.js"></script>

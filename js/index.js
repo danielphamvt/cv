@@ -28,8 +28,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
     if (mobileMenu) {
         mobileMenu.addEventListener('click', () => {
-            mobileMenu.classList.toggle('active');
+            const isExpanded = mobileMenu.classList.toggle('active');
             navLinks.classList.toggle('active');
+            mobileMenu.setAttribute('aria-expanded', isExpanded);
 
             // Animate hamburger
             const bars = mobileMenu.querySelectorAll('.bar');
@@ -59,14 +60,59 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
+    // Theme Toggle Logic
+    const themeToggle = document.getElementById('theme-toggle');
+    const htmlElement = document.documentElement;
+    const themeIcon = themeToggle.querySelector('i');
+    
+    // Check for saved preference or system preference
+    const savedTheme = localStorage.getItem('theme');
+    const systemPrefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+    
+    // Function to set theme
+    const setTheme = (theme) => {
+        if (theme === 'light') {
+            htmlElement.setAttribute('data-theme', 'light');
+            themeIcon.classList.remove('fa-moon');
+            themeIcon.classList.add('fa-sun');
+            localStorage.setItem('theme', 'light');
+        } else {
+            htmlElement.setAttribute('data-theme', 'dark');
+            themeIcon.classList.remove('fa-sun');
+            themeIcon.classList.add('fa-moon');
+            localStorage.setItem('theme', 'dark');
+        }
+    };
+    
+    // Initial Load
+    if (savedTheme) {
+        setTheme(savedTheme);
+    } else if (!systemPrefersDark) {
+        // If system prefers light, set light
+        setTheme('light');
+    } else {
+        // Default to dark
+        setTheme('dark');
+    }
+    
+    // Event Listener
+    if (themeToggle) {
+        themeToggle.addEventListener('click', () => {
+            const currentTheme = htmlElement.getAttribute('data-theme');
+            const newTheme = currentTheme === 'light' ? 'dark' : 'light';
+            setTheme(newTheme);
+        });
+    }
+
     // Navbar Scroll Effect
     const navbar = document.querySelector('.navbar');
     window.addEventListener('scroll', () => {
         if (window.scrollY > 50) {
-            navbar.style.background = 'rgba(10, 15, 28, 0.95)';
-            navbar.style.boxShadow = '0 4px 20px rgba(0,0,0,0.1)';
+            // Using CSS variables for background to respect theme
+            navbar.style.background = 'var(--bg-glass)';
+            navbar.style.boxShadow = 'var(--shadow-sm)';
         } else {
-            navbar.style.background = 'rgba(10, 15, 28, 0.8)';
+            navbar.style.background = 'var(--bg-glass)'; // Consistent glass effect
             navbar.style.boxShadow = 'none';
         }
     });
@@ -115,5 +161,23 @@ document.addEventListener('DOMContentLoaded', () => {
                 behavior: 'smooth'
             });
         });
+    }
+
+    // Visitor Counter
+    const baseCount = 1000;
+    const displayElement = document.getElementById('visit-count');
+    const sourceElement = document.getElementById('busuanzi_value_site_pv');
+
+    if (displayElement && sourceElement) {
+        const updateCounter = () => {
+            const realCount = parseInt(sourceElement.innerText.replace(/,/g, '')) || 0;
+            if (realCount > 0) {
+                displayElement.textContent = (baseCount + realCount).toLocaleString();
+            }
+        };
+
+        const observer = new MutationObserver(updateCounter);
+        observer.observe(sourceElement, { childList: true, characterData: true, subtree: true });
+        updateCounter();
     }
 });
