@@ -1,10 +1,7 @@
 @import url('variables.css');
 
 /* Modern Variables & Reset */
-:root {
-    /* Fonts managed in variables.css */
-    /* Transitions managed in variables.css */
-}
+/* Modern Variables & Reset */
 
 *,
 *::before,
@@ -341,20 +338,7 @@ h5 {
     align-items: center;
 }
 
-.cursor {
-    display: inline-block;
-    width: 3px;
-    height: 1em;
-    background-color: var(--accent-primary);
-    animation: blink 1s infinite;
-    margin-left: 8px;
-}
 
-@keyframes blink {
-    50% {
-        opacity: 0;
-    }
-}
 
 .hero-desc {
     font-size: 1.25rem;
@@ -387,7 +371,7 @@ h5 {
     background: var(--accent-gradient);
     border-radius: 50px;
     transition: transform 0.1s;
-    box-shadow: 0px 6px 0px 0px var(--blue-600),
+    box-shadow: 0px 6px 0px 0px var(--cyan-600),
         /* Slightly reduced depth */
         0px 15px 20px rgba(0, 0, 0, 0.4),
         inset 0px 1px 0px rgba(255, 255, 255, 0.3);
@@ -402,14 +386,14 @@ h5 {
 
 .btn-3d:hover {
     transform: translateY(-2px);
-    box-shadow: 0px 8px 0px 0px var(--blue-600),
+    box-shadow: 0px 8px 0px 0px var(--cyan-600),
         0px 20px 30px rgba(0, 0, 0, 0.5),
         inset 0px 1px 0px rgba(255, 255, 255, 0.3);
 }
 
 .btn-3d:active {
     transform: translateY(4px);
-    box-shadow: 0px 2px 0px 0px var(--blue-600),
+    box-shadow: 0px 2px 0px 0px var(--cyan-600),
         0px 5px 10px rgba(0, 0, 0, 0.4),
         inset 0px 1px 0px rgba(255, 255, 255, 0.3);
 }
@@ -512,7 +496,8 @@ h5 {
 }
 
 .floating-card i {
-    color: var(--accent-primary); /* Replaced gradient with solid color for better contrast */
+    color: var(--accent-primary);
+    /* Replaced gradient with solid color for better contrast */
     font-size: 1.5rem;
 }
 
@@ -745,7 +730,7 @@ h5 {
 
 .edu-card-mini {
     padding: 1.5rem;
-    background: rgba(0, 0, 0, 0.2);
+    background: rgba(8, 145, 178, 0.1);
     border-radius: 16px;
     border-left: 3px solid var(--accent-secondary);
     transition: var(--transition);
@@ -912,7 +897,8 @@ h5 {
     position: relative;
     transition: var(--transition);
     backdrop-filter: blur(10px);
-    box-shadow: var(--shadow-sm); /* Added shadow for better visibility in light mode */
+    box-shadow: var(--shadow-sm);
+    /* Added shadow for better visibility in light mode */
 }
 
 .timeline-content:hover {
@@ -1358,7 +1344,8 @@ h5 {
     left: 20px;
     font-size: 0.75rem;
     font-family: var(--font-code);
-    color: var(--bg-primary); /* Hidden by default (same as bg) */
+    color: var(--bg-primary);
+    /* Hidden by default (same as bg) */
     /* Hidden by default (same as bg) */
     transition: all 0.4s ease;
     cursor: help;

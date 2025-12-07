@@ -1,36 +1,48 @@
 :root {
-    /* Core Palette - Slate (Neutral) */
-    --slate-50: #f8fafc;
-    --slate-100: #f1f5f9;
-    --slate-200: #e2e8f0;
-    --slate-300: #cbd5e1;
-    --slate-400: #94a3b8;
-    --slate-500: #64748b;
-    --slate-600: #475569;
-    --slate-700: #334155;
-    --slate-800: #1e293b;
-    --slate-900: #0f172a;
-    --slate-950: #020617;
+    /* Core Palette - Deep Digital Navy (High Contrast) */
+    --navy-50: #f0f4f8;
+    --navy-100: #d9e2ec;
+    --navy-200: #bcccdc;
+    --navy-300: #9fb3c8;
+    --navy-400: #829ab1;
+    --navy-500: #627d98;
+    --navy-600: #486581;
+    --navy-700: #334e68;
+    --navy-800: #1f3a52;
+    /* Darker */
+    --navy-900: #0b1d2e;
+    /* Deep Navy (Darker than 0x102A43 for contrast) */
+    --navy-950: #050e17;
+    /* Almost Black */
 
-    /* Core Palette - Blue (Primary) */
-    --blue-500: #3b82f6;
-    --blue-600: #2563eb;
-    --blue-700: #1d4ed8;
+    /* Core Palette - Digital Cyan (Tech/Trust) */
+    --cyan-300: #90E0D6;
+    --cyan-400: #5FD2C7;
+    --cyan-500: #2EC4B6;
+    /* Base - Digital Blue */
+    --cyan-600: #259D92;
+    --cyan-700: #1C766D;
 
-    /* Core Palette - Teal/Sky (Accent) */
-    --teal-400: #2dd4bf;
-    --teal-500: #14b8a6;
-    --sky-500: #0ea5e9;
-    --sky-600: #0284c7;
+    /* Core Palette - Neutral Gray */
+    --gray-50: #f9fafb;
+    --gray-100: #f3f4f6;
+    --gray-200: #e5e7eb;
+    --gray-300: #d1d5db;
+    --gray-400: #9ca3af;
+    --gray-500: #6b7280;
+    --gray-600: #4b5563;
+    --gray-700: #374151;
+    --gray-800: #1f2937;
+    --gray-900: #111827;
 
-    /* High Contrast Neutrals */
+    /* High Contrast */
     --neutral-white: #ffffff;
     --neutral-black: #000000;
-    
-    /* RGB Values for Opacity helpers */
-    --blue-500-rgb: 59, 130, 246;
-    --blue-600-rgb: 37, 99, 235;
-    --teal-500-rgb: 20, 184, 166;
+
+    /* RGB Helpers */
+    --cyan-500-rgb: 46, 196, 182;
+    --cyan-600-rgb: 37, 157, 146;
+    --navy-900-rgb: 11, 29, 46;
 
     /* Transitions */
     --transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
@@ -41,85 +53,85 @@
     --font-code: 'JetBrains Mono', 'Courier New', monospace;
 }
 
-/* Dark Mode (Default) */
+/* Dark Mode (Default) - High Contrast Digital Emerald */
 html {
-    --bg-primary: var(--slate-900);
-    --bg-secondary: var(--slate-800);
-    --bg-tertiary: var(--slate-950);
-    --bg-glass: rgba(15, 23, 42, 0.85); /* Increased opacity for better contrast */
-    --bg-card: rgba(30, 41, 59, 0.7);
-    --bg-card-hover: rgba(30, 41, 59, 0.95);
-    --bg-floating-card: rgba(15, 23, 42, 0.95);
+    --bg-primary: var(--navy-900);
+    --bg-secondary: var(--navy-800);
+    --bg-tertiary: var(--navy-950);
+    --bg-glass: rgba(11, 29, 46, 0.9);
+    /* Higher opacity for contrast */
+    --bg-card: rgba(31, 58, 82, 0.7);
+    --bg-card-hover: rgba(31, 58, 82, 0.95);
+    --bg-floating-card: rgba(11, 29, 46, 0.95);
 
-    --text-primary: var(--slate-50); /* Increased contrast from slate-100 */
-    --text-secondary: var(--slate-300); /* Increased contrast from slate-400 */
-    --text-muted: var(--slate-400);
-    --text-accent: var(--teal-400);
+    --text-primary: var(--neutral-white);
+    --text-secondary: var(--gray-300);
+    /* Lighter gray for better contrast on dark navy */
+    --text-muted: var(--navy-300);
+    --text-accent: var(--cyan-400);
+    /* Brighter Cyan for contrast against dark bg */
 
-    --border-color: rgba(255, 255, 255, 0.12);
-    --border-hover: var(--blue-500);
+    --border-color: rgba(46, 196, 182, 0.2);
+    /* Cyan tint border */
+    --border-hover: var(--cyan-500);
 
-    /* Professional Gradient: Blue -> Teal */
-    --accent-primary: var(--blue-500);
-    --accent-secondary: var(--teal-400);
-    --accent-gradient: linear-gradient(135deg, var(--blue-500) 0%, var(--teal-400) 100%);
-    --accent-glow: 0 0 25px rgba(59, 130, 246, 0.4);
-    
-    /* Dynamic RGB for RGBA use */
-    --accent-rgb: var(--blue-500-rgb);
+    /* Gradient: Cyan -> Light Cyan */
+    --accent-primary: var(--cyan-500);
+    --accent-secondary: var(--cyan-400);
+    --accent-gradient: linear-gradient(135deg, var(--cyan-500) 0%, var(--cyan-300) 100%);
+    --accent-glow: 0 0 30px rgba(46, 196, 182, 0.35);
 
-    --shadow-sm: 0 2px 4px rgba(0, 0, 0, 0.4);
-    --shadow-lg: 0 20px 50px -12px rgba(0, 0, 0, 0.8);
-    --shadow-3d: 0 10px 30px -10px rgba(59, 130, 246, 0.25);
-    
+    --accent-rgb: var(--cyan-500-rgb);
+
+    --shadow-sm: 0 2px 4px rgba(0, 0, 0, 0.5);
+    --shadow-lg: 0 20px 50px -12px rgba(0, 0, 0, 0.9);
+    --shadow-3d: 0 10px 30px -10px rgba(46, 196, 182, 0.2);
+
     /* Status Colors */
-    --status-success: #10b981;
-    --status-success-rgb: 16, 185, 129;
+    --status-success: var(--cyan-500);
+    --status-success-rgb: 46, 196, 182;
 
-    /* Blob colors - Deep Blue/Teal theme */
-    --blob-1: rgba(59, 130, 246, 0.6);
-    --blob-2: rgba(20, 184, 166, 0.5);
-    --blob-3: rgba(14, 165, 233, 0.5);
+    /* Blob colors */
+    --blob-1: rgba(46, 196, 182, 0.2);
+    --blob-2: rgba(11, 29, 46, 0.6);
+    --blob-3: rgba(95, 210, 199, 0.15);
 }
 
-/* Light Mode Override - High Contrast Professional */
+/* Light Mode Override */
 html[data-theme="light"] {
     --bg-primary: var(--neutral-white);
-    --bg-secondary: var(--slate-100); /* Darker for better contrast vs white */
-    --bg-tertiary: var(--slate-200);
-    /* Reduced glass effect for better readability */
-    --bg-glass: rgba(255, 255, 255, 0.95); 
+    --bg-secondary: var(--navy-50);
+    --bg-tertiary: var(--navy-100);
+    --bg-glass: rgba(255, 255, 255, 0.95);
     --bg-card: var(--neutral-white);
-    --bg-card-hover: var(--slate-100);
+    --bg-card-hover: var(--navy-50);
     --bg-floating-card: var(--neutral-white);
 
-    --text-primary: var(--slate-900);
-    --text-secondary: var(--slate-700); /* Much darker for contrast */
-    --text-muted: var(--slate-600);
-    --text-accent: var(--blue-700); /* Darker blue for white bg */
+    --text-primary: var(--navy-900);
+    --text-secondary: var(--navy-700);
+    /* Darker for contrast */
+    --text-muted: var(--navy-500);
+    --text-accent: var(--cyan-600);
+    /* Darker Cyan for contrast on light bg */
 
-    --border-color: var(--slate-300); /* Darker border for visibility */
-    --border-hover: var(--blue-600);
+    --border-color: var(--navy-200);
+    --border-hover: var(--cyan-600);
 
-    /* Light Mode Gradient: Deep Blue -> Teal */
-    --accent-primary: var(--blue-600);
-    --accent-secondary: var(--teal-500);
-    --accent-gradient: linear-gradient(135deg, var(--blue-600) 0%, var(--teal-500) 100%);
-    --accent-glow: 0 0 15px rgba(37, 99, 235, 0.15);
-    
-    /* Dynamic RGB for RGBA use */
-    --accent-rgb: var(--blue-600-rgb);
+    --accent-primary: var(--cyan-600);
+    --accent-secondary: var(--cyan-500);
+    --accent-gradient: linear-gradient(135deg, var(--cyan-600) 0%, var(--cyan-500) 100%);
+    --accent-glow: 0 0 15px rgba(37, 157, 146, 0.15);
+
+    --accent-rgb: var(--cyan-600-rgb);
 
     --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.05);
-    --shadow-lg: 0 10px 30px -5px rgba(0, 0, 0, 0.1);
-    --shadow-3d: 0 4px 12px rgba(37, 99, 235, 0.1);
-    
-    /* Status Colors */
-    --status-success: #059669;
-    --status-success-rgb: 5, 150, 105;
+    --shadow-lg: 0 10px 30px -5px rgba(11, 29, 46, 0.1);
+    --shadow-3d: 0 4px 12px rgba(37, 157, 146, 0.1);
 
-    /* Blob colors - Very subtle or hidden for clean professional look */
-    --blob-1: rgba(59, 130, 246, 0.08);
-    --blob-2: rgba(20, 184, 166, 0.08);
-    --blob-3: rgba(14, 165, 233, 0.08);
+    --status-success: var(--cyan-600);
+    --status-success-rgb: 37, 157, 146;
+
+    --blob-1: rgba(46, 196, 182, 0.1);
+    --blob-2: rgba(11, 29, 46, 0.05);
+    --blob-3: rgba(95, 210, 199, 0.1);
 }

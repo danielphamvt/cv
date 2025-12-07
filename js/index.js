@@ -64,11 +64,11 @@ document.addEventListener('DOMContentLoaded', () => {
     const themeToggle = document.getElementById('theme-toggle');
     const htmlElement = document.documentElement;
     const themeIcon = themeToggle.querySelector('i');
-    
+
     // Check for saved preference or system preference
     const savedTheme = localStorage.getItem('theme');
     const systemPrefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-    
+
     // Function to set theme
     const setTheme = (theme) => {
         if (theme === 'light') {
@@ -83,18 +83,15 @@ document.addEventListener('DOMContentLoaded', () => {
             localStorage.setItem('theme', 'dark');
         }
     };
-    
+
     // Initial Load
     if (savedTheme) {
         setTheme(savedTheme);
-    } else if (!systemPrefersDark) {
-        // If system prefers light, set light
-        setTheme('light');
     } else {
-        // Default to dark
+        // Default to dark regardless of system preference
         setTheme('dark');
     }
-    
+
     // Event Listener
     if (themeToggle) {
         themeToggle.addEventListener('click', () => {
