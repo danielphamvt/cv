@@ -11,7 +11,6 @@
         content="Van Tuan PHAM, Data Scientist, AI Researcher, Machine Learning Engineer, MLOps, Deep Learning, NLP, Generative AI, Python, Django, Full-stack Developer, Portfolio">
     <meta name="author" content="Van Tuan PHAM">
 
-    <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://danielphamvt.github.io/cv">
     <meta property="og:title" content="Van Tuan PHAM | Full-stack Data Scientist & AI Researcher">
@@ -19,7 +18,6 @@
         content="Ph.D. in Computer Science with 10+ years of experience building scalable production AI systems.">
     <meta property="og:image" content="img/resume-photo.png">
 
-    <!-- Twitter -->
     <meta property="twitter:card" content="summary_large_image">
     <meta property="twitter:url" content="https://danielphamvt.github.io/cv">
     <meta property="twitter:title" content="Van Tuan PHAM | Full-stack Data Scientist & AI Researcher">
@@ -29,32 +27,57 @@
 
     <link rel="shortcut icon" href="img/icon.png">
 
-    <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link
-        href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=Outfit:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap"
+        href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=JetBrains+Mono:wght@400;500&display=swap"
         rel="stylesheet">
 
-    <!-- AOS Animation Library -->
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
 
-    <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
     <link rel="stylesheet" href="css/main.css">
+
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Person",
+      "name": "Van Tuan PHAM",
+      "givenName": "Van Tuan",
+      "familyName": "PHAM",
+      "jobTitle": "Full-Stack Data Scientist & AI Engineer",
+      "email": "phamtuantkt@gmail.com",
+      "url": "https://danielphamvt.github.io/cv",
+      "sameAs": [
+        "https://www.linkedin.com/in/danielphamvt/",
+        "https://github.com/danielphamvt",
+        "https://twitter.com/TuanPham_NEU"
+      ],
+      "alumniOf": {
+        "@type": "CollegeOrUniversity",
+        "name": "University of Lorraine",
+        "url": "https://lgipm.univ-lorraine.fr/node/4907"
+      },
+      "knowsAbout": ["Machine Learning", "Deep Learning", "NLP", "Python", "Django", "PyTorch", "TensorFlow", "Data Science", "MLOps"],
+      "worksFor": {
+        "@type": "Organization",
+        "name": "Databourg-Komunidad Global"
+      }
+    }
+    </script>
 </head>
 
 <body>
 
-    <!-- Background Animation -->
+    <a href="#main-content" class="skip-link">Skip to main content</a>
+
     <div class="bg-animation">
         <div class="blob blob-1"></div>
         <div class="blob blob-2"></div>
         <div class="blob blob-3"></div>
     </div>
 
-    <!-- Navigation -->
     <nav class="navbar">
         <div class="container nav-content">
             <a href="#" class="logo">V.T.<span class="text-accent"> PHAM</span></a>
@@ -70,7 +93,6 @@
                 <a href="#projects" class="nav-link">Projects</a>
                 <a href="#qualifications" class="nav-link">Qualifications</a>
                 <a href="#contact" class="btn-nav">Contact Me</a>
-                <!-- Theme Toggle -->
                 <button id="theme-toggle" class="theme-btn" aria-label="Toggle Dark Mode">
                     <i class="fas fa-moon"></i>
                 </button>
@@ -78,7 +100,7 @@
         </div>
     </nav>
 
-    <!-- Hero Section -->
+    <main id="main-content">
     <section id="home" class="hero">
         <div class="container hero-content">
             <div class="hero-text" data-aos="fade-up" data-aos-duration="1000">
@@ -95,9 +117,9 @@
                     models that serve millions of users.
                 </p>
                 <div class="hero-btns">
-                    <a href="#experience" class="btn btn-primary"><i class="fas fa-briefcase"></i> View Experience</a>
+                    <a href="#experience" class="btn-primary"><i class="fas fa-briefcase"></i> View Experience</a>
                     <a href="Machine learning researcher PHAM Van Tuan.pdf" target="_blank" rel="noopener noreferrer"
-                        class="btn btn-3d"><i class="fas fa-download"></i> Download CV</a>
+                        class="btn-3d"><i class="fas fa-download"></i> Download CV</a>
                 </div>
 
                 <div class="social-links">
@@ -111,7 +133,7 @@
 
             <div class="hero-visual" data-aos="fade-left" data-aos-duration="1200" data-aos-delay="200">
                 <div class="profile-card-glass">
-                    <img src="img/resume-photo.png" alt="Van Tuan PHAM" class="profile-img">
+                    <img src="img/resume-photo.png" alt="Van Tuan PHAM" class="profile-img" loading="lazy" width="414" height="414">
                     <div class="floating-card card-1">
                         <i class="fas fa-chart-line"></i>
                         <span>Data Scientist</span>
@@ -135,7 +157,6 @@
         </a>
     </section>
 
-    <!-- About Section -->
     <section id="about" class="section">
         <div class="container">
             <div class="section-header" data-aos="fade-up">
@@ -186,30 +207,28 @@
                     </div>
                 </div>
 
-                <!-- Education moved here -->
                 <div class="education-wrapper" data-aos="fade-left">
                     <h3 class="subsection-title"><i class="fas fa-graduation-cap"></i> Education</h3>
                     <div class="edu-list">
                         <div class="edu-card-mini">
                             <div class="edu-year">2020 - 2023</div>
                             <h4>Ph.D. in Computer Science</h4>
-                            <p>University of Lorraine, France <img src="https://flagcdn.com/w40/fr.png" alt="France"
-                                    class="country-flag"></p>
-                            <!-- <span class="edu-focus">Optimization & Machine Learning</span> -->
+                            <p><a href="https://lgipm.univ-lorraine.fr/node/4907" target="_blank" rel="noopener noreferrer" class="org-link">University of Lorraine</a>, Metz, France <img src="https://flagcdn.com/w40/fr.png" alt="France"
+                                    class="country-flag" loading="lazy"></p>
                         </div>
                         <div class="edu-card-mini">
                             <div class="edu-year">2014 - 2016</div>
                             <h4>Master in ICT</h4>
-                            <p>University of Lorraine, France <img src="https://flagcdn.com/w40/fr.png" alt="France"
-                                    class="country-flag"></p>
-                            <p>USTH, Vietnam <img src="https://flagcdn.com/w40/vn.png" alt="Vietnam"
-                                    class="country-flag"></p>
+                            <p><a href="https://lgipm.univ-lorraine.fr/node/4907" target="_blank" rel="noopener noreferrer" class="org-link">University of Lorraine</a>, Metz, France <img src="https://flagcdn.com/w40/fr.png" alt="France"
+                                    class="country-flag" loading="lazy"></p>
+                            <p>USTH, Hanoi, Vietnam <img src="https://flagcdn.com/w40/vn.png" alt="Vietnam"
+                                    class="country-flag" loading="lazy"></p>
                         </div>
                         <div class="edu-card-mini">
                             <div class="edu-year">2008 - 2012</div>
                             <h4>Bachelor in MIS</h4>
-                            <p>National Economics Uni., Vietnam <img src="https://flagcdn.com/w40/vn.png" alt="Vietnam"
-                                    class="country-flag"></p>
+                            <p><a href="https://neu.edu.vn/" target="_blank" rel="noopener noreferrer" class="org-link">National Economics University</a>, Hanoi, Vietnam <img src="https://flagcdn.com/w40/vn.png" alt="Vietnam"
+                                    class="country-flag" loading="lazy"></p>
                         </div>
                     </div>
                 </div>
@@ -217,7 +236,6 @@
         </div>
     </section>
 
-    <!-- Skills Section -->
     <section id="skills" class="section bg-darker">
         <div class="container">
             <div class="section-header" data-aos="fade-up">
@@ -226,7 +244,6 @@
             </div>
 
             <div class="skills-container">
-                <!-- AI & ML -->
                 <div class="skill-category" data-aos="fade-up" data-aos-delay="100">
                     <div class="category-header">
                         <i class="fas fa-brain"></i>
@@ -247,7 +264,6 @@
                     </div>
                 </div>
 
-                <!-- Backend & Web -->
                 <div class="skill-category" data-aos="fade-up" data-aos-delay="200">
                     <div class="category-header">
                         <i class="fas fa-laptop-code"></i>
@@ -267,7 +283,6 @@
                     </div>
                 </div>
 
-                <!-- DevOps & Tools -->
                 <div class="skill-category" data-aos="fade-up" data-aos-delay="300">
                     <div class="category-header">
                         <i class="fas fa-tools"></i>
@@ -282,15 +297,14 @@
                         <span class="tag">Linux / Bash</span>
                         <span class="tag">Agile</span>
                         <span class="tag">GitHub Actions</span>
-                        <span class="tag">Prompt Engineering</span>
-                        <span class="tag">Vibe Coding</span>
+                        <span class="tag">Agentic Coding/ Workflows</span>
+                        <span class="tag">Claude Code/Cursor/Antigravity</span>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Experience Section -->
     <section id="experience" class="section">
         <div class="container">
             <div class="section-header" data-aos="fade-up">
@@ -300,16 +314,15 @@
 
             <div class="timeline">
 
-                <!-- Job 1 -->
                 <div class="timeline-item" data-aos="fade-left">
                     <div class="timeline-content">
                         <div class="date-badge">Sep 2024 - Present <span class="duration-tag">1+ yrs</span></div>
                         <h3 class="job-title">Full-Stack Data Scientist</h3>
-                        <h4 class="company-name"><i class="fas fa-building"></i> Databourg-Komunidad Global,
+                        <h4 class="company-name"><i class="fas fa-building"></i> <a href="https://www.komunidad.global/" target="_blank" rel="noopener noreferrer" class="org-link">Databourg-Komunidad Global</a>,
                             Luxembourg
                         </h4>
                         <ul class="job-desc">
-                            <li><strong>Real-time Weather Forecasting:</strong> Led the development of multi-source
+                            <li><strong>Real-time Weather Forecasting:</strong> Led the development of multi-source 
                                 weather forecasting models, processing data from <strong>60,000+ satellite and IoT
                                     sensors worldwide</strong>. Improved accuracy by <strong>5%</strong> and migrated
                                 legacy ML to scalable Deep Learning architectures.</li>
@@ -332,12 +345,11 @@
                 </div>
 
 
-                <!-- Job 2 -->
                 <div class="timeline-item" data-aos="fade-left">
                     <div class="timeline-content">
                         <div class="date-badge">Nov 2023 - June 2024 <span class="duration-tag">6 mos</span></div>
                         <h3 class="job-title">Postdoctoral Researcher & Tech Lead</h3>
-                        <h4 class="company-name"><i class="fas fa-building"></i> LCOMS - University of Lorraine, France
+                        <h4 class="company-name"><i class="fas fa-building"></i> <a href="https://lgipm.univ-lorraine.fr/node/4907" target="_blank" rel="noopener noreferrer" class="org-link">LCOMS - University of Lorraine</a>, France
                         </h4>
                         <ul class="job-desc">
                             <li><strong>Tech Lead for "DCASOLVER":</strong> Led the technical design and development of
@@ -352,12 +364,11 @@
                     </div>
                 </div>
 
-                <!-- Job 3 -->
                 <div class="timeline-item" data-aos="fade-right">
                     <div class="timeline-content">
                         <div class="date-badge">Oct 2020 - Nov 2023 <span class="duration-tag">3 yrs 1 mo</span></div>
                         <h3 class="job-title">Ph.D. Candidate in Machine Learning</h3>
-                        <h4 class="company-name"><i class="fas fa-university"></i> LGIPM - University of Lorraine,
+                        <h4 class="company-name"><i class="fas fa-university"></i> <a href="https://lgipm.univ-lorraine.fr/node/4907" target="_blank" rel="noopener noreferrer" class="org-link">LGIPM - University of Lorraine</a>,
                             France</h4>
                         <ul class="job-desc">
                             <li><strong>Thesis:</strong> "New Machine Learning Techniques for Finance and Healthcare."
@@ -373,13 +384,11 @@
                     </div>
                 </div>
 
-                <!-- Job 4 -->
                 <div class="timeline-item" data-aos="fade-left">
                     <div class="timeline-content">
                         <div class="date-badge">Aug 2012 - Oct 2020 <span class="duration-tag">8 yrs 2 mos</span></div>
                         <h3 class="job-title">Lecturer & Researcher</h3>
-                        <h4 class="company-name"><i class="fas fa-chalkboard-teacher"></i> National Economics
-                            University, Vietnam</h4>
+                        <h4 class="company-name"><i class="fas fa-chalkboard-teacher"></i> <a href="https://neu.edu.vn/" target="_blank" rel="noopener noreferrer" class="org-link">National Economics University</a>, Vietnam</h4>
                         <ul class="job-desc">
                             <li><strong>Teaching:</strong> Taught Fundamental Computer Science, Applied Informatics, MIS
                                 and Machine Learning.</li>
@@ -389,12 +398,11 @@
                     </div>
                 </div>
 
-                <!-- Job 5 -->
                 <div class="timeline-item" data-aos="fade-left">
                     <div class="timeline-content">
                         <div class="date-badge">Aug 2019 - Jan 2020 <span class="duration-tag">6 mos</span></div>
                         <h3 class="job-title">Data Engineer & Web Developer</h3>
-                        <h4 class="company-name"><i class="fas fa-building"></i> Vingroup, Vietnam</h4>
+                        <h4 class="company-name"><i class="fas fa-building"></i> <a href="https://vingroup.net/" target="_blank" rel="noopener noreferrer" class="org-link">Vingroup</a>, Vietnam</h4>
                         <ul class="job-desc">
                             <li><strong>Logistics System:</strong> Engaged in the implementation of an AI-based
                                 Logistics system (web).</li>
@@ -404,12 +412,11 @@
                     </div>
                 </div>
 
-                <!-- Job 6 -->
                 <div class="timeline-item" data-aos="fade-right">
                     <div class="timeline-content">
                         <div class="date-badge">Mar 2018 - Aug 2019 <span class="duration-tag">1 yr 6 mos</span></div>
                         <h3 class="job-title">Product Owner (AI Lab) & Team Lead</h3>
-                        <h4 class="company-name"><i class="fas fa-building"></i> Nal Vietnam Jsc.</h4>
+                        <h4 class="company-name"><i class="fas fa-building"></i> <a href="https://nals.vn/en/" target="_blank" rel="noopener noreferrer" class="org-link">Nal Vietnam Jsc.</a></h4>
                         <ul class="job-desc">
                             <li><strong>Leadership:</strong> Managed a passionate team building AI-based applications
                                 for many outsourcing PoC and projects.</li>
@@ -423,7 +430,6 @@
                     </div>
                 </div>
 
-                <!-- Job 7 -->
                 <div class="timeline-item" data-aos="fade-left">
                     <div class="timeline-content">
                         <div class="date-badge">Oct 2016 - Sep 2017 <span class="duration-tag">1 yr</span></div>
@@ -440,12 +446,11 @@
                     </div>
                 </div>
 
-                <!-- Job 8 -->
                 <div class="timeline-item" data-aos="fade-right">
                     <div class="timeline-content">
                         <div class="date-badge">Apr 2016 - Sep 2016 <span class="duration-tag">6 mos</span></div>
                         <h3 class="job-title">Machine Learning Intern</h3>
-                        <h4 class="company-name"><i class="fas fa-university"></i> University of Lorraine, France</h4>
+                        <h4 class="company-name"><i class="fas fa-university"></i> <a href="https://lgipm.univ-lorraine.fr/node/4907" target="_blank" rel="noopener noreferrer" class="org-link">University of Lorraine</a>, France</h4>
                         <ul class="job-desc">
                             <li><strong>Research:</strong> Conducted research on long-term autonomy and data acquisition
                                 for Autonomous Surface Vessels using ML.</li>
@@ -457,7 +462,6 @@
         </div>
     </section>
 
-    <!-- Projects Section -->
     <section id="projects" class="section bg-darker">
         <div class="container">
             <div class="section-header" data-aos="fade-up">
@@ -466,7 +470,6 @@
             </div>
 
             <div class="projects-grid">
-                <!-- Project: Global Climate Risk System -->
                 <div class="project-card" data-aos="zoom-in" data-aos-delay="100">
                     <div class="project-content">
                         <div class="project-icon"><i class="fas fa-globe-americas"></i></div>
@@ -484,7 +487,6 @@
                     </div>
                 </div>
 
-                <!-- Project: Advanced Precipitation System -->
                 <div class="project-card" data-aos="zoom-in">
                     <div class="project-content">
                         <div class="project-icon"><i class="fas fa-cloud-showers-heavy"></i></div>
@@ -502,7 +504,6 @@
                     </div>
                 </div>
 
-                <!-- Project 1: DCASOLVERS -->
                 <div class="project-card" data-aos="zoom-in">
                     <div class="project-content">
                         <div class="project-icon"><i class="fas fa-network-wired"></i></div>
@@ -520,7 +521,6 @@
                     </div>
                 </div>
 
-                <!-- Project 2: Drone Scheduling -->
                 <div class="project-card" data-aos="zoom-in" data-aos-delay="100">
                     <div class="project-content">
                         <div class="project-icon"><i class="fas fa-plane-departure"></i></div>
@@ -539,7 +539,6 @@
                     </div>
                 </div>
 
-                <!-- Project 3: Robot Localization -->
                 <div class="project-card" data-aos="zoom-in" data-aos-delay="200">
                     <div class="project-content">
                         <div class="project-icon"><i class="fas fa-map-marked-alt"></i></div>
@@ -558,7 +557,6 @@
                     </div>
                 </div>
 
-                <!-- Project 4: Iris Recognition -->
                 <div class="project-card" data-aos="zoom-in" data-aos-delay="300">
                     <div class="project-content">
                         <div class="project-icon"><i class="fas fa-eye"></i></div>
@@ -577,7 +575,6 @@
                     </div>
                 </div>
 
-                <!-- Project 5: Chatbot Platform -->
                 <div class="project-card" data-aos="zoom-in" data-aos-delay="400">
                     <div class="project-content">
                         <div class="project-icon"><i class="fas fa-comments"></i></div>
@@ -595,7 +592,6 @@
                     </div>
                 </div>
 
-                <!-- Project 6: Sentiment Analysis -->
                 <div class="project-card" data-aos="zoom-in" data-aos-delay="500">
                     <div class="project-content">
                         <div class="project-icon"><i class="fas fa-smile-beam"></i></div>
@@ -614,7 +610,6 @@
                     </div>
                 </div>
 
-                <!-- Project 7: CSR Chatbot -->
                 <div class="project-card" data-aos="zoom-in" data-aos-delay="600">
                     <div class="project-content">
                         <div class="project-icon"><i class="fas fa-headset"></i></div>
@@ -632,7 +627,6 @@
                     </div>
                 </div>
 
-                <!-- Project 8: Face Access Control -->
                 <div class="project-card" data-aos="zoom-in" data-aos-delay="700">
                     <div class="project-content">
                         <div class="project-icon"><i class="fas fa-id-badge"></i></div>
@@ -651,7 +645,6 @@
                     </div>
                 </div>
 
-                <!-- Project 9: NLP Engine -->
                 <div class="project-card" data-aos="zoom-in" data-aos-delay="800">
                     <div class="project-content">
                         <div class="project-icon"><i class="fas fa-car"></i></div>
@@ -669,7 +662,6 @@
                     </div>
                 </div>
 
-                <!-- Project 10: ASV ML -->
                 <div class="project-card" data-aos="zoom-in" data-aos-delay="900">
                     <div class="project-content">
                         <div class="project-icon"><i class="fas fa-ship"></i></div>
@@ -690,11 +682,9 @@
         </div>
     </section>
 
-    <!-- Qualifications Section (Certifications & Publications) -->
     <section id="qualifications" class="section">
         <div class="container">
             <div class="grid-2-col">
-                <!-- Certifications moved here -->
                 <div class="certifications-col" data-aos="fade-right">
                     <h3 class="col-title"><i class="fas fa-certificate"></i> Certifications</h3>
                     <div class="cert-grid">
@@ -785,7 +775,6 @@
         </div>
     </section>
 
-    <!-- Contact Section -->
     <section id="contact" class="section contact-section">
         <div class="container contact-content" data-aos="zoom-in">
             <h2 class="section-title">Let's <span class="text-accent">Connect</span></h2>
@@ -816,10 +805,11 @@
         </div>
     </section>
 
-    <!-- Scroll to Top Button -->
     <a href="#" class="scroll-top" id="scrollTop" aria-label="Scroll to Top">
         <i class="fas fa-arrow-up"></i>
     </a>
+
+    </main>
 
     <footer class="footer">
         <div class="container">
@@ -833,7 +823,6 @@
     </footer>
 
     <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
-
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script src="https://unpkg.com/typed.js@2.0.16/dist/typed.umd.js"></script>
     <script src="js/index.js"></script>

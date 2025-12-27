@@ -1,7 +1,23 @@
 @import url('variables.css');
 
 /* Modern Variables & Reset */
-/* Modern Variables & Reset */
+/* Skip Link (Accessibility) */
+.skip-link {
+    position: absolute;
+    top: -40px;
+    left: 0;
+    background: var(--accent-primary);
+    color: white;
+    padding: 8px 16px;
+    z-index: 10000;
+    transition: top 0.3s;
+    text-decoration: none;
+    font-weight: 600;
+}
+
+.skip-link:focus {
+    top: 0;
+}
 
 *,
 *::before,
@@ -25,6 +41,7 @@ body {
     position: relative;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+    letter-spacing: -0.01em;
 }
 
 /* Background Animation */
@@ -168,7 +185,7 @@ h5 {
 
 .nav-links {
     display: flex;
-    gap: 2.5rem;
+    gap: 2rem;
     align-items: center;
 }
 
@@ -179,6 +196,7 @@ h5 {
     font-size: 0.95rem;
     transition: var(--transition);
     position: relative;
+    letter-spacing: -0.01em;
 }
 
 .nav-link:hover,
@@ -762,17 +780,19 @@ h5 {
     font-size: 0.95rem;
     color: var(--text-secondary);
     margin: 0;
-    display: flex;
-    align-items: center;
+    line-height: 1.6;
 }
 
 .country-flag {
     height: 14px;
     width: auto;
-    margin-left: 8px;
+    margin-left: 6px;
     border-radius: 2px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
     opacity: 0.9;
+    display: inline-block;
+    vertical-align: middle;
+    margin-top: -2px;
 }
 
 .edu-focus {
@@ -959,13 +979,27 @@ h5 {
     color: var(--text-secondary);
     font-size: 1.1rem;
     margin-bottom: 1.5rem;
-    display: flex;
-    align-items: center;
-    gap: 0.8rem;
+    display: block;
+    line-height: 1.5;
 }
 
 .company-name i {
     color: var(--accent-secondary);
+    margin-right: 0.5rem;
+}
+
+/* Organization link styling - subtle and elegant */
+.org-link {
+    color: #60a5fa;
+    text-decoration: none;
+    transition: var(--transition);
+    position: relative;
+    font-weight: 500;
+}
+
+.org-link:hover {
+    color: #93c5fd;
+    text-decoration: underline;
 }
 
 .job-desc {
@@ -1461,5 +1495,33 @@ h5 {
     .email-btn {
         font-size: 1.2rem;
         padding: 1rem 2rem;
+    }
+}
+
+/* Reduced Motion (Accessibility) */
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+    }
+
+    .blob {
+        animation: none;
+    }
+
+    .status-dot {
+        animation: none;
+    }
+
+    .floating-card {
+        animation: none;
+    }
+
+    .wheel {
+        animation: none;
     }
 }

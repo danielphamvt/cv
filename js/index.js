@@ -126,7 +126,7 @@ document.addEventListener('DOMContentLoaded', () => {
             // Changed from sectionHeight / 3 to a fixed offset (e.g., 150px)
             // This prevents long sections (like Experience) from triggering too early
             // when the previous section (Skills) is short.
-            if (pageYOffset >= (sectionTop - 150)) {
+            if (window.scrollY >= (sectionTop - 150)) {
                 current = section.getAttribute('id');
             }
         });
