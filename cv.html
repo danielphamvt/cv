@@ -4,18 +4,28 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CV - Daniel (Tuan) PHAM | Geospatial Data Scientist</title>
+    <title>CV - Daniel (Tuan) PHAM | Data Scientist / AI Engineer / Research Engineer</title>
     <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Removed Google Fonts: system fonts produce clean PDF text layers for ATS -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         body {
-            /* Apple system fonts */
-            font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "SF Pro Display", "Helvetica Neue", Arial, sans-serif;
+            /* System font stack: produces continuous text runs in Chrome PDF — ATS-friendly */
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
             background-color: #f1f5f9;
             color: #1e293b;
-            line-height: 1.25;
-            /* Maximize line density */
-            font-size: 10.8px;
+            line-height: 1.3;
+            font-size: 11px;
+            text-rendering: optimizeLegibility;
+            -webkit-font-smoothing: subpixel-antialiased;
+        }
+
+        /* Disable all ligatures globally — W3C + OpenType dual approach for Chrome print */
+        * {
+            font-feature-settings: "liga" 0, "calt" 0, "clig" 0, "kern" 0;
+            font-variant-ligatures: none;
+            /* W3C standard: Chrome respects this for print */
+            font-kerning: none;
         }
 
         .page-container {
@@ -30,7 +40,7 @@
         /* --- SIDEBAR --- */
         .sidebar {
             width: 32%;
-            background-color: #0f172a;
+            background-color: #1e293b;
             color: #f8fafc;
             padding: 2rem 1.5rem;
         }
@@ -41,21 +51,52 @@
             padding: 2rem 2.25rem;
         }
 
+        /* Sidebar: left-align (narrow column — justify would create whitespace rivers) */
+        .sidebar p,
+        .sidebar div,
+        .sidebar span {
+            text-align: left;
+            word-break: normal;
+            overflow-wrap: normal;
+            hyphens: none;
+            -webkit-hyphens: none;
+        }
+
+        /* Re-center sidebar photo header — higher specificity (2 classes) overrides .sidebar p/div rule */
+        .sidebar .text-center,
+        .sidebar .text-center h1,
+        .sidebar .text-center p,
+        .sidebar .text-center div,
+        .sidebar .text-center span {
+            text-align: center;
+        }
+
+        .sidebar .text-center img {
+            display: block;
+            margin: 0 auto;
+        }
+
+        /* Main content: justify for European/academic CV style */
         .main-content p,
         .main-content li {
             text-align: justify;
+            text-align-last: left;
+            /* last line of each paragraph stays left, not stretched */
+            word-break: normal;
+            overflow-wrap: normal;
+            hyphens: auto;
+            -webkit-hyphens: auto;
         }
 
         .section-title {
             font-size: 13.5px;
             font-weight: 700;
             text-transform: uppercase;
-            letter-spacing: 0.05em;
+            letter-spacing: 0;
+            /* was 0.02em — caused "PR OFESSIONAL", "WO RK" splits in PDF */
             margin-bottom: 4px;
-            /* Reduce title padding */
             border-bottom: 2px solid #e2e8f0;
             padding-bottom: 2px;
-            /* Tight border and text spacing */
             color: #0f172a;
             display: flex;
             align-items: center;
@@ -124,12 +165,14 @@
 
         /* --- SKILL TAGS --- */
         .skill-group-title {
-            font-size: 10px;
+            font-size: 11px;
+            /* was 10px — below threshold for clean PDF glyphs */
             font-weight: 700;
             color: #94a3b8;
             margin-bottom: 3px;
             text-transform: uppercase;
-            letter-spacing: 0.05em;
+            letter-spacing: 0;
+            /* was 0.05em — caused glyph splitting in PDF */
             display: flex;
             align-items: center;
         }
@@ -138,7 +181,8 @@
             background-color: rgba(30, 41, 59, 0.6);
             padding: 2px 6px;
             border-radius: 4px;
-            font-size: 10.5px;
+            font-size: 11px;
+            /* was 10.5px — increase for cleaner PDF glyph encoding */
             margin: 1px;
             display: inline-block;
             border: 1px solid #334155;
@@ -192,7 +236,7 @@
             }
 
             .sidebar {
-                background-color: #0f172a !important;
+                background-color: #1e293b !important;
             }
 
             .avoid-break {
@@ -238,37 +282,46 @@
         <aside class="sidebar">
             <div class="text-center mb-6">
                 <div class="relative inline-block mb-3">
-                    <img src="img/resume-photo.png" alt="Daniel (Tuan) PHAM"
+                    <img src="img/resume-photo.png" alt=""
                         class="w-32 h-32 rounded-full mx-auto border-4 border-slate-700 object-cover shadow-lg"
-                        onerror="this.src='https://ui-avatars.com/api/?name=Daniel+Pham&background=38bdf8&color=fff&size=150'">
+                        onerror="this.style.display='none'">
                 </div>
-                <h1 class="text-xl font-bold tracking-tight text-white mb-0.5">Daniel (Tuan) PHAM</h1>
-                <p class="text-sky-400 text-[11px] font-bold uppercase leading-tight tracking-wide">
-                    Geospatial Data Scientist<br>
-                    <span class="text-slate-400 text-[10px] font-medium">Ph.D. in Computer Science</span>
+                <h1 class="text-xl font-bold tracking-tight text-white mb-0.5" style="white-space:nowrap">Daniel (Tuan)
+                    PHAM
+                </h1>
+                <p class="text-sky-400 text-[11px] font-bold uppercase leading-tight tracking-normal">
+                    Data Scientist / AI Engineer / Research Engineer<br>
+                    <span class="text-slate-400 text-[10.5px] font-medium">Ph.D. in Computer Science</span>
                 </p>
+                <div
+                    class="mt-2.5 text-[11px] font-medium tracking-normal text-sky-200 border border-sky-400/20 bg-sky-900/30 py-1 px-2 rounded-md inline-block">
+                    <i class="fa-solid fa-id-card text-sky-400 mr-1 opacity-70"></i>Valid Luxembourg Work Permit<br>
+                    <span class="text-[10px] text-slate-400">Fast-Track Employer Transfer</span>
+                </div>
             </div>
 
             <section class="mb-5">
                 <h3 class="section-title text-sm"><i class="fa-solid fa-address-card"></i> Contact</h3>
-                <div class="space-y-2 text-[11.5px] text-slate-300 ml-1">
-                    <p class="flex items-center gap-3 break-all">
-                        <i class="fa-solid fa-envelope text-sky-500 w-3 text-center"></i>
-                        <span>&#112;&#104;&#97;&#109;&#116;&#117;&#97;&#110;&#116;&#107;&#116;&#64;&#103;&#109;&#97;&#105;&#108;&#46;&#99;&#111;&#109;</span>
+                <div class="text-[11.5px] space-y-1.5 text-slate-300 ml-1 mt-2">
+                    <p class="flex items-center">
+                        <i class="fa-solid fa-envelope text-sky-500 mr-2.5 w-3 text-center"></i>
+                        <a href="mailto:phamtuantkt@gmail.com"
+                            class="hover:text-white hover:underline transition-all">phamtuantkt@gmail.com</a>
                     </p>
-                    <p class="flex items-center gap-3">
-                        <i class="fa-solid fa-location-dot text-sky-500 w-3 text-center"></i>
-                        <span>Metz, France</span>
+                    <p class="flex items-center">
+                        <i class="fa-solid fa-phone text-sky-500 mr-2.5 w-3 text-center"></i>
+                        <a href="tel:+33749818545" class="hover:text-white hover:underline transition-all">(+33) 749 81
+                            85 45</a>
                     </p>
-                    <p class="flex items-center gap-3 break-all">
-                        <i class="fa-brands fa-linkedin text-sky-500 w-3 text-center"></i>
-                        <a href="https://linkedin.com/in/danielphamvt"
-                            class="hover:text-white transition-colors">linkedin.com/in/danielphamvt</a>
+                    <p class="flex items-center">
+                        <i class="fa-brands fa-linkedin text-sky-500 mr-2.5 w-3 text-center"></i>
+                        <a href="https://linkedin.com/in/danielphamvt" target="_blank"
+                            class="hover:text-white hover:underline transition-all">linkedin.com/in/danielphamvt</a>
                     </p>
-                    <p class="flex items-center gap-3 break-all">
-                        <i class="fa-solid fa-globe text-sky-500 w-3 text-center"></i>
-                        <a href="https://daniel-pham.me"
-                            class="hover:text-white transition-colors">daniel-pham.me</a>
+                    <p class="flex items-center">
+                        <i class="fa-solid fa-globe text-sky-500 mr-2.5 w-3 text-center"></i>
+                        <a href="https://daniel-pham.me" target="_blank"
+                            class="hover:text-white hover:underline transition-all">daniel-pham.me</a>
                     </p>
                 </div>
             </section>
@@ -277,7 +330,7 @@
                 <h3 class="section-title text-sm"><i class="fa-solid fa-graduation-cap"></i> Education</h3>
                 <div class="timeline-container text-[11px] text-slate-300">
                     <div class="timeline-item">
-                        <span class="text-sky-400 font-bold block mb-0.5">2020 — 2023</span>
+                        <span class="text-sky-400 font-bold block mb-0.5">2020 - 2023</span>
                         <span class="font-bold text-[11.5px] text-white">
                             <a href="https://docnum.univ-lorraine.fr/public/DDOC_T_2023_0219_PHAM.pdf" target="_blank"
                                 class="hover:text-sky-300 transition-colors">Ph.D. in Computer Science</a>
@@ -288,11 +341,10 @@
                         </span>
                     </div>
                     <div class="timeline-item">
-                        <span class="text-sky-400 font-bold block mb-0.5">2014 — 2016</span>
+                        <span class="text-sky-400 font-bold block mb-0.5">2014 - 2016</span>
                         <span class="font-bold text-[11.5px] text-white">
                             <a href="https://docnum.univ-lorraine.fr/public/DDOC_T_2023_0219_PHAM.pdf" target="_blank"
-                                class="hover:text-sky-300 transition-colors">Master of Science in Information
-                                Technology</a>
+                                class="hover:text-sky-300 transition-colors">MSc. in Information Technology</a>
                         </span>
                         <span class="block text-slate-400">
                             <a href="https://lgipm.univ-lorraine.fr/node/4907" target="_blank"
@@ -300,117 +352,13 @@
                         </span>
                     </div>
                     <div class="timeline-item">
-                        <span class="text-sky-400 font-bold block mb-0.5">2008 — 2012</span>
-                        <span class="font-bold text-[11.5px] text-white">Bachelor of Science in Management Information
-                            Systems</span>
+                        <span class="text-sky-400 font-bold block mb-0.5">2008 - 2012</span>
+                        <span class="font-bold text-[11.5px] text-white">BS in MIS - (Hybrid: IT &
+                            Economics)</span>
                         <span class="block text-slate-400">
                             <a href="https://neu.edu.vn/" target="_blank"
                                 class="hover:text-white transition-colors">National Economics University</a>, Vietnam
                         </span>
-                    </div>
-                </div>
-            </section>
-
-            <section class="mb-5 avoid-break">
-                <h3 class="section-title text-sm"><i class="fa-solid fa-certificate"></i> Certifications</h3>
-                <div class="text-[11px] space-y-1.5 text-slate-300 ml-1">
-                    <p><i class="fab fa-aws text-sky-500 mr-1.5 w-3 text-center"></i>
-                        <span class="text-white font-medium">Generative AI with LLMs</span>
-                        <span class="text-slate-500"> — AWS, 2024</span>
-                    </p>
-                    <p><i class="fas fa-brain text-sky-500 mr-1.5 w-3 text-center"></i>
-                        <span class="text-white font-medium">GenAI for Executives</span>
-                        <span class="text-slate-500"> — IBM, 2024</span>
-                    </p>
-                    <p><i class="fas fa-cogs text-sky-500 mr-1.5 w-3 text-center"></i>
-                        <span class="text-white font-medium">MLOps with Azure</span>
-                        <span class="text-slate-500"> — LinkedIn, 2024</span>
-                    </p>
-                    <p><i class="fas fa-code-branch text-sky-500 mr-1.5 w-3 text-center"></i>
-                        <span class="text-white font-medium">MLOps Essentials</span>
-                        <span class="text-slate-500"> — LinkedIn, 2024</span>
-                    </p>
-                    <p><i class="fas fa-robot text-sky-500 mr-1.5 w-3 text-center"></i>
-                        <span class="text-white font-medium">Intro to Large Language Models</span>
-                        <span class="text-slate-500"> — LinkedIn, 2024</span>
-                    </p>
-                    <p><i class="fas fa-graduation-cap text-sky-500 mr-1.5 w-3 text-center"></i>
-                        <span class="text-white font-medium">Deep Learning Specialization</span>
-                        <span class="text-slate-500"> — Coursera, 2018</span>
-                    </p>
-                    <p><i class="fas fa-medkit text-sky-500 mr-1.5 w-3 text-center"></i>
-                        <span class="text-white font-medium">Data Science in Healthcare</span>
-                        <span class="text-slate-500"> — Univ. Edinburgh, 2023</span>
-                    </p>
-                    <p><i class="fas fa-balance-scale text-sky-500 mr-1.5 w-3 text-center"></i>
-                        <span class="text-white font-medium">Data Science Ethics</span>
-                        <span class="text-slate-500"> — Univ. Michigan, 2023</span>
-                    </p>
-                </div>
-            </section>
-            <section class="mb-5 avoid-break">
-                <h3 class="section-title text-sm"><i class="fa-solid fa-wrench"></i> Skills Highlights</h3>
-                <div class="space-y-2 ml-1">
-                    <div>
-                        <span class="skill-group-title"><i class="fa-solid fa-brain mr-1.5 opacity-70"></i> CORE AI &
-                            DS</span>
-                        <div class="flex flex-wrap">
-                            <span class="skill-tag">Machine Learning</span>
-                            <span class="skill-tag">Deep Learning</span>
-                            <span class="skill-tag">LLMs & NLP</span>
-                            <span class="skill-tag">Data Processing</span>
-                            <span class="skill-tag">Visualization</span>
-                        </div>
-                    </div>
-                    <div>
-                        <span class="skill-group-title"><i class="fa-solid fa-earth-americas mr-1.5 opacity-70"></i>
-                            GEOSPATIAL</span>
-                        <div class="flex flex-wrap">
-                            <span class="skill-tag">GDAL/Rasterio</span>
-                            <span class="skill-tag">netCDF/HDF5</span>
-                            <span class="skill-tag">MapboxGL/Leaflet</span>
-                            <span class="skill-tag">Spatial Analysis</span>
-                        </div>
-                    </div>
-                    <div>
-                        <span class="skill-group-title"><i class="fa-solid fa-database mr-1.5 opacity-70"></i> DATABASE
-                            & INFRA</span>
-                        <div class="flex flex-wrap">
-                            <span class="skill-tag">PostgreSQL/MySQL</span>
-                            <span class="skill-tag">MongoDB</span>
-                            <span class="skill-tag">Docker</span>
-                            <span class="skill-tag">Airflow/RabbitMQ</span>
-                        </div>
-                    </div>
-                    <div>
-                        <span class="skill-group-title"><i class="fa-solid fa-cloud mr-1.5 opacity-70"></i> WEB &
-                            CLOUD</span>
-                        <div class="flex flex-wrap">
-                            <span class="skill-tag">Django/FastAPI</span>
-                            <span class="skill-tag">RESTful APIs</span>
-                            <span class="skill-tag">AWS Cloud</span>
-                        </div>
-                    </div>
-                    <div>
-                        <span class="skill-group-title"><i class="fa-solid fa-code mr-1.5 opacity-70"></i>
-                            LANGUAGES</span>
-                        <div class="flex flex-wrap">
-                            <span class="skill-tag">Python (OOP)</span>
-                            <span class="skill-tag">C/C++</span>
-                            <span class="skill-tag">JavaScript/TS</span>
-                            <span class="skill-tag">Django Framework</span>
-                        </div>
-                    </div>
-                    <div>
-                        <span class="skill-group-title"><i class="fa-solid fa-toolbox mr-1.5 opacity-70"></i>
-                            TOOLS</span>
-                        <div class="flex flex-wrap">
-                            <span class="skill-tag">PyTorch/Tensorflow</span>
-                            <span class="skill-tag">Sklearn/Pandas</span>
-                            <span class="skill-tag">OpenCV</span>
-                            <span class="skill-tag">Agentic Coding</span>
-                            <span class="skill-tag">Git Flow</span>
-                        </div>
                     </div>
                 </div>
             </section>
@@ -421,12 +369,113 @@
                     <p><i class="fa-solid fa-check text-sky-500 mr-1.5 w-3 text-center"></i><span
                             class="text-white font-medium">Vietnamese:</span> Native</p>
                     <p><i class="fa-solid fa-check text-sky-500 mr-1.5 w-3 text-center"></i><span
-                            class="text-white font-medium">English:</span> Professional</p>
+                            class="text-white font-medium">English:</span> Professional Working</p>
                     <p><i class="fa-solid fa-check text-sky-500 mr-1.5 w-3 text-center"></i><span
                             class="text-white font-medium">French:</span> Elementary</p>
                 </div>
             </section>
+            <section class="mb-5 avoid-break">
+                <h3 class="section-title text-sm"><i class="fa-solid fa-wrench"></i> Skills</h3>
+                <div class="space-y-2 ml-1">
+                    <div>
+                        <span class="skill-group-title"><i class="fa-solid fa-brain mr-1.5 opacity-70"></i> CORE AI &
+                            DS</span>
+                        <div class="flex flex-wrap">
+                            <span class="skill-tag">Machine Learning</span>
+                            <span class="skill-tag">Deep Learning</span>
+                            <span class="skill-tag">LLMs & NLP</span>
+                            <span class="skill-tag">Advanced RAG</span>
+                            <span class="skill-tag">Data Processing</span>
+                        </div>
+                    </div>
+                    <div>
+                        <span class="skill-group-title"><i class="fa-solid fa-earth-americas mr-1.5 opacity-70"></i>
+                            GEOSPATIAL</span>
+                        <div class="flex flex-wrap">
+                            <span class="skill-tag">GDAL/Rasterio</span>
+                            <span class="skill-tag">netCDF/HDF5</span>
+                            <span class="skill-tag">MapboxGL/Leaflet</span>
+                            <span class="skill-tag">QGIS</span>
+                            <span class="skill-tag">Spatial Analysis</span>
+                        </div>
+                    </div>
+                    <div>
+                        <span class="skill-group-title"><i class="fa-solid fa-database mr-1.5 opacity-70"></i> DATABASE
+                            & INFRA</span>
+                        <div class="flex flex-wrap">
+                            <span class="skill-tag">PostgreSQL/pgvector</span>
+                            <span class="skill-tag">MongoDB</span>
+                            <span class="skill-tag">Docker</span>
+                            <span class="skill-tag">Airflow/RabbitMQ</span>
+                            <span class="skill-tag">MLflow</span>
+                        </div>
+                    </div>
+                    <div>
+                        <span class="skill-group-title"><i class="fa-solid fa-cloud mr-1.5 opacity-70"></i> WEB &
+                            CLOUD</span>
+                        <div class="flex flex-wrap">
+                            <span class="skill-tag">Django/FastAPI</span>
+                            <span class="skill-tag">React</span>
+                            <span class="skill-tag">AWS/Azure/GCP</span>
+                        </div>
+                    </div>
+                    <div>
+                        <span class="skill-group-title"><i class="fa-solid fa-code mr-1.5 opacity-70"></i>
+                            LANGUAGES</span>
+                        <div class="flex flex-wrap">
+                            <span class="skill-tag">Python (OOP)</span>
+                            <span class="skill-tag">SQL</span>
+                            <span class="skill-tag">C/C++</span>
+                        </div>
+                    </div>
+                    <div>
+                        <span class="skill-group-title"><i class="fa-solid fa-toolbox mr-1.5 opacity-70"></i>
+                            PRACTICES & TOOLS</span>
+                        <div class="flex flex-wrap">
+                            <span class="skill-tag">PyTorch/TensorFlow</span>
+                            <span class="skill-tag">Sklearn/Pandas</span>
+                            <span class="skill-tag">Mathematical Optimization</span>
+                            <span class="skill-tag">OpenCV</span>
+                            <span class="skill-tag">CI/CD Pipelines</span>
+                            <span class="skill-tag">Agile/Scrum</span>
+                        </div>
+                    </div>
+                </div>
+            </section>
 
+            <section class="mb-5 avoid-break">
+                <h3 class="section-title text-sm"><i class="fa-solid fa-certificate"></i> Certifications</h3>
+                <div class="text-[11px] space-y-1.5 text-slate-300 ml-1">
+                    <p><i class="fab fa-aws text-sky-500 mr-1.5 w-3 text-center"></i>
+                        <span class="text-white font-medium">Generative AI with LLMs</span>
+                        <span class="text-slate-500"> - AWS, 2024</span>
+                    </p>
+                    <p><i class="fas fa-cogs text-sky-500 mr-1.5 w-3 text-center"></i>
+                        <span class="text-white font-medium">MLOps with Azure</span>
+                        <span class="text-slate-500"> - LinkedIn, 2024</span>
+                    </p>
+                    <p><i class="fas fa-code-branch text-sky-500 mr-1.5 w-3 text-center"></i>
+                        <span class="text-white font-medium">MLOps Essentials</span>
+                        <span class="text-slate-500"> - LinkedIn, 2024</span>
+                    </p>
+                    <p><i class="fas fa-robot text-sky-500 mr-1.5 w-3 text-center"></i>
+                        <span class="text-white font-medium">Intro to Large Language Models</span>
+                        <span class="text-slate-500"> - LinkedIn, 2024</span>
+                    </p>
+                    <p><i class="fas fa-graduation-cap text-sky-500 mr-1.5 w-3 text-center"></i>
+                        <span class="text-white font-medium">Deep Learning Specialization</span>
+                        <span class="text-slate-500"> - Coursera, 2018</span>
+                    </p>
+                    <p><i class="fas fa-medkit text-sky-500 mr-1.5 w-3 text-center"></i>
+                        <span class="text-white font-medium">Data Science in Healthcare</span>
+                        <span class="text-slate-500"> - Univ. Edinburgh, 2023</span>
+                    </p>
+                    <p><i class="fas fa-balance-scale text-sky-500 mr-1.5 w-3 text-center"></i>
+                        <span class="text-white font-medium">Data Science Ethics</span>
+                        <span class="text-slate-500"> - Univ. Michigan, 2023</span>
+                    </p>
+                </div>
+            </section>
 
             <section class="avoid-break">
                 <h3 class="section-title text-sm"><i class="fa-solid fa-heart"></i> Hobbies</h3>
@@ -444,18 +493,19 @@
         <main class="main-content">
             <section class="mb-5">
                 <h3 class="section-title"><i class="fa-solid fa-user-tie"></i> Professional Summary</h3>
-                <ul class="list-none text-[11.8px] text-gray-800 space-y-1.5 mt-1.5 ml-1">
+                <ul class="list-none text-[11.8px] text-gray-800 space-y-2 mt-1.5 ml-1">
                     <li class="flex items-start">
                         <i class="fa-solid fa-play text-slate-300 mt-1 mr-2 text-[8px]"></i>
-                        <span><strong>Ph.D. in Computer Science</strong> with over 10+ years of cross-functional
-                            expertise
-                            bridging
-                            <strong>Geospatial Data Science, Machine Learning and AI</strong>.</span>
+                        <span><strong>Ph.D. in Computer Science</strong> with <strong>10+ years of experience</strong>
+                            bridging theoretical research and enterprise deployment, transforming complex scientific and
+                            business challenges into scalable production AI systems.</span>
                     </li>
                     <li class="flex items-start">
                         <i class="fa-solid fa-play text-slate-300 mt-1 mr-2 text-[8px]"></i>
-                        <span>Proven track record of leading end-to-end R&D lifecycles—from complex predictive modeling
-                            to scalable full-stack deployments—delivering high-impact commercial solutions.</span>
+                        <span>Proven track record engineering <strong>high-throughput ML pipelines</strong>,
+                            <strong>geospatial analytics platforms</strong>, and <strong>agentic workflows</strong>,
+                            delivering end-to-end solutions from mathematical modeling to full-stack cloud
+                            deployment.</span>
                     </li>
                 </ul>
             </section>
@@ -467,9 +517,8 @@
 
                     <div class="timeline-item avoid-break">
                         <div class="job-header">
-                            <h4 class="text-[13.5px] font-bold text-gray-900">Geospatial Data Scientist</h4>
-                            <span
-                                class="text-[10px] uppercase font-bold text-sky-700 bg-sky-50 border border-sky-100 px-2 py-0.5 rounded-full shadow-sm">10/2024
+                            <h4 class="text-[13.5px] font-bold text-gray-900">Senior Data Scientist</h4>
+                            <span class="text-[10.5px] font-bold text-sky-500">10/2024
                                 - Present</span>
                         </div>
                         <p class="text-[11.5px] font-medium text-sky-600 mb-0.5 italic">
@@ -477,18 +526,25 @@
                                 target="_blank" class="cv-link">Databourg-Komunidad Global</a>, Luxembourg
                         </p>
                         <ul class="list-disc list-outside ml-4 text-[12px] text-gray-700 space-y-0.5">
-                            <li><strong>Real-time Weather Forecasting:</strong> Led development of multi-source forecast
-                                models, processing <strong>60,000+ IoT/satellite sensors</strong> natively. Increased
-                                accuracy by <strong>5%</strong> via Deep Learning modernization. Re-architected
-                                pipelines via
-                                <strong>Airflow, RabbitMQ, Docker</strong>, automating data throughput and boosting
-                                system metrics by <strong>20-40%</strong>. Delivered commercial GIS dashboard services
-                                (Django/FastAPI/MongoDB/MapboxGL) actively used by public agencies across
-                                <strong>Philippines, Indonesia, Brazil</strong>.
+                            <li><strong><a href="https://rainvision-phl.databourg.com/" target="_blank"
+                                        class="cv-link text-sky-600">Real-time Weather Forecasting
+                                        (Rainvision)</a>:</strong> Led development of multi-source weather forecasting
+                                models, processing data from <strong>60,000+ satellite and IoT sensors</strong>
+                                worldwide; boosted prediction accuracy by <strong>5%</strong> by migrating legacy ML to
+                                scalable Deep Learning architectures.
                             </li>
-                            <li><strong>Climate Score Platform:</strong> Engineered critical statistical frameworks
-                                analyzing <strong>multi-terabyte netCDF metrics</strong> for sustainable environmental
-                                strategies.</li>
+                            <li><strong>Full-Stack GIS & Pipeline Architecture:</strong> Re-architected data pipelines
+                                using <strong>Airflow, RabbitMQ, & Docker</strong> to automate workflows and enhance
+                                system throughput by <strong>20-40%</strong>; delivered commercial-grade interactive map
+                                dashboards and secure APIs using <strong>FastAPI, Django, MongoDB, and MapboxGL</strong>
+                                for public agencies across France, the Philippines, Indonesia, and Brazil.
+                            </li>
+                            <li><strong><a href="https://kcs.databourg.com/" target="_blank"
+                                        class="cv-link text-sky-600">Climate Risk Scoring Platform</a>:</strong>
+                                Engineered specialized analytics platform evaluating physical climate risks and their
+                                financial impacts on operations, processing <strong>multi-terabyte netCDF environmental
+                                    datasets</strong> for global sustainability regulations compliance.
+                            </li>
                         </ul>
                     </div>
 
@@ -496,8 +552,7 @@
                     <div class="timeline-item avoid-break">
                         <div class="job-header">
                             <h4 class="text-[13.5px] font-bold text-gray-900">Postdoctoral / R&D engineer</h4>
-                            <span
-                                class="text-[10px] uppercase font-bold text-gray-600 bg-gray-100 border border-gray-200 px-2 py-0.5 rounded-full shadow-sm">12/2023
+                            <span class="text-[10.5px] font-bold text-slate-400">12/2023
                                 - 06/2024</span>
                         </div>
                         <p class="text-[11.5px] font-medium text-sky-600 mb-0.5 italic">
@@ -506,15 +561,12 @@
                                 Univ. of Lorraine</a>, Metz, France
                         </p>
                         <ul class="list-disc list-outside ml-4 text-[12px] text-gray-700 space-y-0.5">
-                            <li><strong>Technical Leadership:</strong> Spearheaded the core development phase of the
-                                <a href="https://logistics-dcasolver.pythonanywhere.com/home" target="_blank"
-                                    class="cv-link font-bold text-sky-600">DCASOLVER</a>
-                                project as Tech-Lead, architecting and launching its integrated commercial web
-                                platform.
-                            </li>
-                            <li><strong>Industrial Optimization:</strong> Engineered advanced mathematical algorithms
-                                solving complex business constraints, heavily focused on <strong>GIS-based logistics and
-                                    routing</strong> applications.</li>
+                            <li><strong>Technical Leadership (DCASOLVER):</strong> Served as Tech-Lead for the <a
+                                    href="https://logistics-dcasolver.pythonanywhere.com/products" target="_blank"
+                                    class="cv-link font-bold text-sky-600">DCASOLVER</a> project, architecting and
+                                launching a commercial web platform; developed mathematical optimization and machine
+                                learning algorithms for <strong>GIS logistics, spatial routing, and multi-hub
+                                    warehousing</strong>.</li>
                         </ul>
                     </div>
 
@@ -522,8 +574,7 @@
                     <div class="timeline-item avoid-break">
                         <div class="job-header">
                             <h4 class="text-[13.5px] font-bold text-gray-900">Ph.D. Candidate / R&D engineer</h4>
-                            <span
-                                class="text-[10px] uppercase font-bold text-gray-600 bg-gray-100 border border-gray-200 px-2 py-0.5 rounded-full shadow-sm">10/2020
+                            <span class="text-[10.5px] font-bold text-slate-400">10/2020
                                 - 11/2023</span>
                         </div>
                         <p class="text-[11.5px] font-medium text-sky-600 mb-0.5 italic">
@@ -532,22 +583,20 @@
                                 class="cv-link">University of Lorraine</a>, Metz, France
                         </p>
                         <ul class="list-disc list-outside ml-4 text-[12px] text-gray-700 space-y-0.5">
-                            <li><strong>Ph.D. Research:</strong> Authored thesis "New machine learning techniques for
-                                finance and healthcare," proposing novel ML architectures to tackle complex domain
-                                challenges, including leveraging advanced NLP and fine-tuned Large Language
-                                Models (BERT/RoBERTa) to address critical health data scarcity.</li>
-                            <li><strong>Defense R&D Partnerships:</strong> Executed 3 joint academic-industry research
-                                projects for a major defense contractor (NAVAL Group), applying Deep Learning, Computer
-                                Vision, and Robotics.</li>
+                            <li><strong>Ph.D. Research:</strong> Authored doctoral thesis on machine learning for
+                                finance and healthcare, designing novel DCA optimization algorithms and fine-tuning
+                                transformer models (BERT/RoBERTa) for clinical text classification.</li>
+                            <li><strong>Defense R&D Partnerships:</strong> Executed 3 joint research projects with naval
+                                contractor NAVAL Group, applying Deep Learning, Computer Vision, and autonomous
+                                robotics.</li>
                         </ul>
                     </div>
 
 
                     <div class="timeline-item avoid-break">
                         <div class="job-header">
-                            <h4 class="text-[13.5px] font-bold text-gray-900">University Lecturer</h4>
-                            <span
-                                class="text-[10px] uppercase font-bold text-gray-600 bg-gray-100 border border-gray-200 px-2 py-0.5 rounded-full shadow-sm">08/2012
+                            <h4 class="text-[13.5px] font-bold text-gray-900">University Lecturer & Researcher</h4>
+                            <span class="text-[10.5px] font-bold text-slate-400">08/2012
                                 - 10/2020</span>
                         </div>
                         <p class="text-[11.5px] font-medium text-sky-600 mb-0.5 italic">
@@ -555,17 +604,18 @@
                                 target="_blank" class="cv-link">National Economics University</a>, Hanoi, Vietnam
                         </p>
                         <ul class="list-disc list-outside ml-4 text-[12px] text-gray-700 space-y-0.5">
-                            <li>Taught courses: Fundamental Computer Science, Applied Informatics, MIS.</li>
-                            <li>Conducted research in the domain of Artificial Intelligence.</li>
+                            <li>Taught core courses: Fundamental Computer Science, Applied Informatics, and MIS.</li>
+                            <li>Conducted academic research in AI; maintained concurrent industry engineering roles
+                                (VinTech, NAL, Chappiebot) to deploy R&D models into commercial applications.</li>
                         </ul>
                     </div>
 
 
                     <div class="timeline-item avoid-break">
                         <div class="job-header">
-                            <h4 class="text-[13.5px] font-bold text-gray-900">GIS Data Engineer / Web Developer</h4>
-                            <span
-                                class="text-[10px] uppercase font-bold text-gray-600 bg-gray-100 border border-gray-200 px-2 py-0.5 rounded-full shadow-sm">08/2019
+                            <h4 class="text-[13.5px] font-bold text-gray-900">GIS Data Engineer / Web Developer <span
+                                    class="text-[11px] font-medium text-slate-500">(Concurrent / Hybrid)</span></h4>
+                            <span class="text-[10.5px] font-bold text-slate-400">08/2019
                                 - 12/2019</span>
                         </div>
                         <p class="text-[11.5px] font-medium text-sky-600 mb-0.5 italic">
@@ -573,20 +623,20 @@
                                 target="_blank" class="cv-link">VinTech Group</a>, Hanoi, Vietnam
                         </p>
                         <ul class="list-disc list-outside ml-4 text-[12px] text-gray-700 space-y-0.5">
-                            <li>Engaged in the implementation of an AI-based Logistics system (web) with Django,
-                                Bootstrap, GoogleMap APIs for Vinmart's retail operations encompassing 2000 stores
-                                across Vietnam.</li>
-                            <li>Collected data, built the pipeline for processing data, designed the MySQL database,
-                                deployed to AWS cloud.</li>
+                            <li>Held concurrent industry role alongside university post: Implemented an AI-based
+                                Logistics web system with Django, Bootstrap, GoogleMap APIs for Vinmart's retail network
+                                (2,000+ stores across Vietnam).</li>
+                            <li>Collected data, built ETL processing pipelines, designed MySQL databases, and deployed
+                                services on AWS cloud.</li>
                         </ul>
                     </div>
 
 
                     <div class="timeline-item avoid-break">
                         <div class="job-header">
-                            <h4 class="text-[13.5px] font-bold text-gray-900">ML Engineer / Product Owner</h4>
-                            <span
-                                class="text-[10px] uppercase font-bold text-gray-600 bg-gray-100 border border-gray-200 px-2 py-0.5 rounded-full shadow-sm">12/2017
+                            <h4 class="text-[13.5px] font-bold text-gray-900">ML Engineer / Product Owner <span
+                                    class="text-[11px] font-medium text-slate-500">(Concurrent / Hybrid)</span></h4>
+                            <span class="text-[10.5px] font-bold text-slate-400">12/2017
                                 - 07/2019</span>
                         </div>
                         <p class="text-[11.5px] font-medium text-sky-600 mb-0.5 italic">
@@ -594,28 +644,30 @@
                                 class="cv-link">NAL Jsc.</a>, Hanoi, Vietnam
                         </p>
                         <ul class="list-disc list-outside ml-4 text-[12px] text-gray-700 space-y-0.5">
-                            <li>Led a young and passionate team including 8 members driving R&D in the field of AI.</li>
-                            <li>Developed AI-based applications for various outsourcing projects: Operator Chatbot, Iris
-                                recognition & tracking, Face lock System, Dialog System, and Hate Speech Detection.</li>
+                            <li>Held concurrent industry engineering role alongside university post: Led an 8-person
+                                team conducting AI R&D.</li>
+                            <li>Delivered production AI-based solutions for external clients: Operator Chatbot, Iris
+                                recognition & tracking, Face lock verification, Dialogue Systems, and Hate Speech
+                                Detection.</li>
                         </ul>
                     </div>
 
 
                     <div class="timeline-item avoid-break">
                         <div class="job-header">
-                            <h4 class="text-[13.5px] font-bold text-gray-900">NLP Engineer</h4>
-                            <span
-                                class="text-[10px] uppercase font-bold text-gray-600 bg-gray-100 border border-gray-200 px-2 py-0.5 rounded-full shadow-sm">10/2016
+                            <h4 class="text-[13.5px] font-bold text-gray-900">NLP Engineer <span
+                                    class="text-[11px] font-medium text-slate-500">(Concurrent / Hybrid)</span></h4>
+                            <span class="text-[10.5px] font-bold text-slate-400">10/2016
                                 - 10/2017</span>
                         </div>
                         <p class="text-[11.5px] font-medium text-sky-600 mb-0.5 italic">
                             <i class="fa-solid fa-building fa-sm mr-1"></i> Chappiebot Inc., Hanoi, Vietnam
                         </p>
                         <ul class="list-disc list-outside ml-4 text-[12px] text-gray-700 space-y-0.5">
-                            <li>Developed clever algorithms and pragmatic solutions for an AI-Based Car Search System.
-                            </li>
-                            <li>Implemented NLP tasks: NER, Topics classifiers, Sentiment Analysis, and Dialogue Systems
-                                in Vietnamese.</li>
+                            <li>Held concurrent industry role alongside university post: Developed core machine learning
+                                algorithms for an AI-based car search engine.</li>
+                            <li>Engineered Vietnamese NLP pipelines: Named Entity Recognition (NER), Topic
+                                Classification, Sentiment Analysis, and intent matching for Dialogue Systems.</li>
                         </ul>
                     </div>
 
@@ -623,8 +675,7 @@
                     <div class="timeline-item avoid-break">
                         <div class="job-header">
                             <h4 class="text-[13.5px] font-bold text-gray-900">ML Research Intern</h4>
-                            <span
-                                class="text-[10px] uppercase font-bold text-gray-600 bg-gray-100 border border-gray-200 px-2 py-0.5 rounded-full shadow-sm">04/2016
+                            <span class="text-[10.5px] font-bold text-slate-400">04/2016
                                 - 10/2016</span>
                         </div>
                         <p class="text-[11.5px] font-medium text-sky-600 mb-0.5 italic">
@@ -646,28 +697,44 @@
                 <h3 class="section-title"><i class="fa-solid fa-layer-group"></i> Key Projects</h3>
                 <div class="text-gray-800 space-y-0.5">
                     <div class="project-item">
-                        <p><strong><i class="fa-solid fa-caret-right text-sky-500 mr-1"></i> Global Climate Risk System
-                                (2025):</strong> Platform processing multi-terabyte climate datasets.
-                            <span
-                                class="italic text-gray-500 bg-gray-100 px-1.5 py-0.5 rounded ml-1 text-[11px]">(GDAL/Rasterio,
-                                QGIS, netCDF/TIF, Machine learning/Statistics, Python, React)</span>.
+                        <p><strong><i class="fa-solid fa-caret-right text-sky-500 mr-1"></i> <a
+                                    href="https://kcs.databourg.com/" target="_blank" class="cv-link">Climate Risk
+                                    Scoring Platform</a>
+                                (2025):</strong> Analytics platform evaluating physical climate risks and financial
+                            impacts for global sustainability regulations compliance.
+                            <span class="italic text-gray-500 bg-gray-100 px-1.5 py-0.5 rounded ml-1 text-[11px]">(ESG
+                                Data, netCDF,
+                                GDAL/Rasterio, Python, Statistics, MongoDB, React)</span>.
                         </p>
                     </div>
                     <div class="project-item">
                         <p><strong><i class="fa-solid fa-caret-right text-sky-500 mr-1"></i> <a
-                                    href="https://rainvision-phl.databourg.com" target="_blank"
-                                    class="cv-link">Real-time Rainfall Forecasting</a> (2024):</strong> ML pipelines for
-                            multi-source precipitation predicting.
+                                    href="https://rainvision-phl.databourg.com/" target="_blank"
+                                    class="cv-link">Real-time Weather Forecasting (Rainvision)</a> (2024):</strong>
+                            Multi-source forecasting models processing 60,000+ sensors; deployed interactive GIS
+                            dashboards across Philippines, Indonesia and Brazil.
+                            <span class="italic text-gray-500 bg-gray-100 px-1.5 py-0.5 rounded ml-1 text-[11px]">(Deep
+                                Learning, Airflow, RabbitMQ, Docker, FastAPI, MapboxGL)</span>.
+                        </p>
+                    </div>
+                    <div class="project-item">
+                        <p><strong><i class="fa-solid fa-caret-right text-sky-500 mr-1"></i> Legal & Regulatory GraphRAG
+                                Engine (2025 - Present):</strong> High-precision knowledge retrieval engine for complex,
+                            hierarchical legal corpora; implemented <strong>Advanced RAG with Hybrid Search (BM25 +
+                                Dense embeddings)</strong> and <strong>Cross-Encoder Reranking</strong> to minimize
+                            hallucinations. Engineered a <strong>GraphRAG</strong> pipeline mapping legal
+                            cross-references and statutory hierarchies across multi-node vector indices.
                             <span
-                                class="italic text-gray-500 bg-gray-100 px-1.5 py-0.5 rounded ml-1 text-[11px]">(TensorFlow,
-                                GDAL/Rasterio, FastAPI, Airflow, Python, Django)</span>.
+                                class="italic text-gray-500 bg-gray-100 px-1.5 py-0.5 rounded ml-1 text-[11px]">(Advanced
+                                RAG, GraphRAG, Qdrant, pgvector, Hybrid Search, Reranking)</span>.
                         </p>
                     </div>
                     <div class="project-item">
                         <p><strong><i class="fa-solid fa-caret-right text-sky-500 mr-1"></i> <a
-                                    href="https://logistics-dcasolver.pythonanywhere.com/home" target="_blank"
-                                    class="cv-link">DCASOLVER</a> Platform (2024):</strong> Tech-Lead for logistics
-                            route optimization platform.
+                                    href="https://logistics-dcasolver.pythonanywhere.com/products" target="_blank"
+                                    class="cv-link">DCASOLVER</a> Platform (2024):</strong> Tech-Lead for AI platform
+                            providing mathematical optimization and machine learning solutions for large-scale
+                            transportation and warehousing systems.
                             <span
                                 class="italic text-gray-500 bg-gray-100 px-1.5 py-0.5 rounded ml-1 text-[11px]">(Python,
                                 Django, FastAPI, MySQL, Linux)</span>.
@@ -687,28 +754,6 @@
                             <span
                                 class="italic text-gray-500 bg-gray-100 px-1.5 py-0.5 rounded ml-1 text-[11px]">(Computer
                                 Vision, YOLO, RestAPI)</span>.
-                        </p>
-                    </div>
-                    <div class="project-item">
-                        <p><strong><i class="fa-solid fa-caret-right text-sky-500 mr-1"></i> Face lock System
-                                (2018):</strong> Automated check-in and timekeeping.
-                            <span class="italic text-gray-500 bg-gray-100 px-1.5 py-0.5 rounded ml-1 text-[11px]">(Deep
-                                Learning, Few-shot Learning)</span>.
-                        </p>
-                    </div>
-                    <div class="project-item">
-                        <p><strong><i class="fa-solid fa-caret-right text-sky-500 mr-1"></i> Automated hate speech
-                                detection (2017):</strong> Sentiment classification for Japanese client.
-                            <span
-                                class="italic text-gray-500 bg-gray-100 px-1.5 py-0.5 rounded ml-1 text-[11px]">(FastText,
-                                Python, Flask)</span>.
-                        </p>
-                    </div>
-                    <div class="project-item">
-                        <p><strong><i class="fa-solid fa-caret-right text-sky-500 mr-1"></i> Customer service chatbot
-                                (2017):</strong> Automated CSR for Thaiminh Group.
-                            <span class="italic text-gray-500 bg-gray-100 px-1.5 py-0.5 rounded ml-1 text-[11px]">(Deep
-                                Learning, Text-To-Speech, Docker)</span>.
                         </p>
                     </div>
                     <div class="project-item">
