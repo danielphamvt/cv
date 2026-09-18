@@ -161,8 +161,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     // Visitor Counter (Total & Current Month Analytics)
-    const baseTotal = 15741;
-    const baseMonthViews = 1108;
+    const baseTotal = 0;
     const totalDisplay = document.getElementById('visit-count');
     const monthDisplay = document.getElementById('month-visit-count');
     const monthNameDisplay = document.getElementById('month-name');
@@ -180,26 +179,38 @@ document.addEventListener('DOMContentLoaded', () => {
         }
 
         const realCount = sourceElement ? (parseInt(sourceElement.innerText.replace(/,/g, '')) || 0) : 0;
-        const total = realCount > 0 ? (baseTotal + realCount) : baseTotal;
+        const total = baseTotal + realCount;
 
-        // Monthly view calculation with persistent monthly baseline
+        // Auto-purge old legacy localStorage baseline from prior sessions
+        const resetKey = 'pv_counter_zero_reset_v1';
         const monthlyBaseKey = `pv_month_base_${currentYearMonth}`;
-        const targetBaseline = baseTotal - baseMonthViews;
+        try {
+            if (!localStorage.getItem(resetKey)) {
+                localStorage.removeItem(monthlyBaseKey);
+                localStorage.setItem(resetKey, 'true');
+            }
+        } catch (e) {}
+
         let savedBaseline = null;
         try {
             savedBaseline = localStorage.getItem(monthlyBaseKey);
-            if (!savedBaseline || parseInt(savedBaseline, 10) !== targetBaseline) {
-                localStorage.setItem(monthlyBaseKey, targetBaseline);
-                savedBaseline = targetBaseline;
+            if (savedBaseline === null) {
+                localStorage.setItem(monthlyBaseKey, String(realCount));
+                savedBaseline = String(realCount);
             }
         } catch (e) {
-            savedBaseline = targetBaseline;
+            savedBaseline = String(realCount);
         }
 
-        let currentMonthViews = total - parseInt(savedBaseline, 10);
-        if (isNaN(currentMonthViews) || currentMonthViews <= 0) {
-            currentMonthViews = baseMonthViews + realCount;
+        let baselineVal = parseInt(savedBaseline, 10);
+        if (isNaN(baselineVal) || baselineVal > total) {
+            baselineVal = realCount;
+            try {
+                localStorage.setItem(monthlyBaseKey, String(baselineVal));
+            } catch (e) {}
         }
+
+        const currentMonthViews = Math.max(0, total - baselineVal);
 
         if (totalDisplay) {
             totalDisplay.textContent = total.toLocaleString();
@@ -208,6 +219,7 @@ document.addEventListener('DOMContentLoaded', () => {
             monthDisplay.textContent = currentMonthViews.toLocaleString();
         }
     };
+
 
     if (totalDisplay && sourceElement) {
         const observer = new MutationObserver(updateVisitorStats);
@@ -289,4 +301,49 @@ document.addEventListener('DOMContentLoaded', () => {
             });
         });
     }
+
+    // Smooth scroll and highlight for timeline project links
+    const timelineProjectPills = document.querySelectorAll('.timeline-project-pill');
+    timelineProjectPills.forEach(pill => {
+        pill.addEventListener('click', (e) => {
+            const targetId = pill.getAttribute('href');
+            if (!targetId || !targetId.startsWith('#')) return;
+
+            const targetEl = document.querySelector(targetId);
+            if (!targetEl) return;
+
+            e.preventDefault();
+
+            // If the target project card is currently hidden by active category filter, reset to "All"
+            if (targetEl.classList.contains('project-card') && targetEl.classList.contains('is-hidden')) {
+                const allFilterBtn = document.querySelector('.project-filters .filter-btn[data-filter="all"]');
+                if (allFilterBtn) {
+                    allFilterBtn.click();
+                }
+            }
+
+            // Smooth scroll to the target element with offset
+            targetEl.scrollIntoView({
+                behavior: 'smooth',
+                block: 'start'
+            });
+
+            // Trigger accent pulse animation
+            targetEl.classList.remove('highlight-target');
+            void targetEl.offsetWidth; // force DOM reflow
+            targetEl.classList.add('highlight-target');
+
+            setTimeout(() => {
+                targetEl.classList.remove('highlight-target');
+            }, 2000);
+
+            // Update URL hash without causing an instant browser jump
+            if (history.pushState) {
+                history.pushState(null, null, targetId);
+            } else {
+                location.hash = targetId;
+            }
+        });
+    });
 });
+
