@@ -161,7 +161,8 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     // Visitor Counter (Total & Current Month Analytics)
-    const baseTotal = 15420;
+    const baseTotal = 15741;
+    const baseMonthViews = 1108;
     const totalDisplay = document.getElementById('visit-count');
     const monthDisplay = document.getElementById('month-visit-count');
     const monthNameDisplay = document.getElementById('month-name');
@@ -183,32 +184,21 @@ document.addEventListener('DOMContentLoaded', () => {
 
         // Monthly view calculation with persistent monthly baseline
         const monthlyBaseKey = `pv_month_base_${currentYearMonth}`;
+        const targetBaseline = baseTotal - baseMonthViews;
         let savedBaseline = null;
         try {
             savedBaseline = localStorage.getItem(monthlyBaseKey);
-        } catch (e) {
-            // LocalStorage might be restricted
-        }
-
-        const dayOfMonth = now.getDate();
-        const daysInMonth = new Date(year, month + 1, 0).getDate();
-        // Estimated monthly pace: ~8.5% of total views distributed across the days of the month
-        const estimatedMonthlyTotal = Math.round(total * 0.085);
-        const elapsedRatio = Math.max(1, dayOfMonth) / daysInMonth;
-        const estimatedCurrentMonth = Math.max(15, Math.round(estimatedMonthlyTotal * elapsedRatio));
-
-        if (!savedBaseline) {
-            savedBaseline = Math.max(0, total - estimatedCurrentMonth);
-            try {
-                localStorage.setItem(monthlyBaseKey, savedBaseline);
-            } catch (e) {
-                // Ignore storage errors
+            if (!savedBaseline || parseInt(savedBaseline, 10) !== targetBaseline) {
+                localStorage.setItem(monthlyBaseKey, targetBaseline);
+                savedBaseline = targetBaseline;
             }
+        } catch (e) {
+            savedBaseline = targetBaseline;
         }
 
         let currentMonthViews = total - parseInt(savedBaseline, 10);
         if (isNaN(currentMonthViews) || currentMonthViews <= 0) {
-            currentMonthViews = estimatedCurrentMonth;
+            currentMonthViews = baseMonthViews + realCount;
         }
 
         if (totalDisplay) {
