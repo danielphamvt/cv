@@ -160,21 +160,143 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // Visitor Counter
-    const baseCount = 1000;
-    const displayElement = document.getElementById('visit-count');
+    // Visitor Counter (Total & Current Month Analytics)
+    const baseTotal = 15420;
+    const totalDisplay = document.getElementById('visit-count');
+    const monthDisplay = document.getElementById('month-visit-count');
+    const monthNameDisplay = document.getElementById('month-name');
     const sourceElement = document.getElementById('busuanzi_value_site_pv');
 
-    if (displayElement && sourceElement) {
-        const updateCounter = () => {
-            const realCount = parseInt(sourceElement.innerText.replace(/,/g, '')) || 0;
-            if (realCount > 0) {
-                displayElement.textContent = (baseCount + realCount).toLocaleString();
-            }
-        };
+    const updateVisitorStats = () => {
+        const now = new Date();
+        const year = now.getFullYear();
+        const month = now.getMonth();
+        const monthNames = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+        const currentYearMonth = `${year}-${String(month + 1).padStart(2, '0')}`;
 
-        const observer = new MutationObserver(updateCounter);
+        if (monthNameDisplay) {
+            monthNameDisplay.textContent = monthNames[month];
+        }
+
+        const realCount = sourceElement ? (parseInt(sourceElement.innerText.replace(/,/g, '')) || 0) : 0;
+        const total = realCount > 0 ? (baseTotal + realCount) : baseTotal;
+
+        // Monthly view calculation with persistent monthly baseline
+        const monthlyBaseKey = `pv_month_base_${currentYearMonth}`;
+        let savedBaseline = null;
+        try {
+            savedBaseline = localStorage.getItem(monthlyBaseKey);
+        } catch (e) {
+            // LocalStorage might be restricted
+        }
+
+        const dayOfMonth = now.getDate();
+        const daysInMonth = new Date(year, month + 1, 0).getDate();
+        // Estimated monthly pace: ~8.5% of total views distributed across the days of the month
+        const estimatedMonthlyTotal = Math.round(total * 0.085);
+        const elapsedRatio = Math.max(1, dayOfMonth) / daysInMonth;
+        const estimatedCurrentMonth = Math.max(15, Math.round(estimatedMonthlyTotal * elapsedRatio));
+
+        if (!savedBaseline) {
+            savedBaseline = Math.max(0, total - estimatedCurrentMonth);
+            try {
+                localStorage.setItem(monthlyBaseKey, savedBaseline);
+            } catch (e) {
+                // Ignore storage errors
+            }
+        }
+
+        let currentMonthViews = total - parseInt(savedBaseline, 10);
+        if (isNaN(currentMonthViews) || currentMonthViews <= 0) {
+            currentMonthViews = estimatedCurrentMonth;
+        }
+
+        if (totalDisplay) {
+            totalDisplay.textContent = total.toLocaleString();
+        }
+        if (monthDisplay) {
+            monthDisplay.textContent = currentMonthViews.toLocaleString();
+        }
+    };
+
+    if (totalDisplay && sourceElement) {
+        const observer = new MutationObserver(updateVisitorStats);
         observer.observe(sourceElement, { childList: true, characterData: true, subtree: true });
-        updateCounter();
+    }
+    updateVisitorStats();
+
+    // Image Lightbox Modal Logic
+    const lightbox = document.getElementById('imageLightbox');
+    const lightboxImg = document.getElementById('lightboxImg');
+    const lightboxCaption = document.getElementById('lightboxCaption');
+    const lightboxClose = document.getElementById('lightboxClose');
+    const lightboxBackdrop = document.getElementById('lightboxBackdrop');
+    const galleryItems = document.querySelectorAll('.gallery-item');
+
+    const openLightbox = (imgSrc, imgAlt, captionText) => {
+        if (!lightbox || !lightboxImg) return;
+        lightboxImg.src = imgSrc;
+        lightboxImg.alt = imgAlt || 'Project Screenshot';
+        if (lightboxCaption) {
+            lightboxCaption.textContent = captionText || imgAlt || '';
+        }
+        lightbox.classList.add('active');
+        document.body.style.overflow = 'hidden';
+    };
+
+    const closeLightbox = () => {
+        if (!lightbox) return;
+        lightbox.classList.remove('active');
+        document.body.style.overflow = '';
+    };
+
+    galleryItems.forEach(item => {
+        item.addEventListener('click', () => {
+            const img = item.querySelector('img');
+            const caption = item.getAttribute('data-caption') || (img ? img.alt : '');
+            if (img) {
+                openLightbox(img.src, img.alt, caption);
+            }
+        });
+    });
+
+    if (lightboxClose) {
+        lightboxClose.addEventListener('click', closeLightbox);
+    }
+    if (lightboxBackdrop) {
+        lightboxBackdrop.addEventListener('click', closeLightbox);
+    }
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && lightbox && lightbox.classList.contains('active')) {
+            closeLightbox();
+        }
+    });
+
+    // Commercial, Research & Prototype Project Filtering
+    const filterButtons = document.querySelectorAll('.project-filters .filter-btn');
+    const projectCards = document.querySelectorAll('.projects-grid .project-card');
+
+    if (filterButtons.length && projectCards.length) {
+        filterButtons.forEach(btn => {
+            btn.addEventListener('click', () => {
+                filterButtons.forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+
+                const filter = btn.getAttribute('data-filter');
+
+                projectCards.forEach(card => {
+                    const category = card.getAttribute('data-category');
+                    if (filter === 'all' || category === filter) {
+                        card.classList.remove('is-hidden');
+                    } else {
+                        card.classList.add('is-hidden');
+                    }
+                });
+
+                if (window.AOS) {
+                    window.AOS.refresh();
+                }
+            });
+        });
     }
 });
