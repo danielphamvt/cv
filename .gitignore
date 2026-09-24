@@ -6,3 +6,10 @@ node_modules
 .DS_Store
 /.claude
 /.factory
+
+# Local-only dashboard captures for the KCS / RainVision cards (not published).
+# To publish: delete these lines, then "git add img/...".
+img/kcs-1.png
+img/kcs-2.png
+img/rainvision-1.png
+img/rainvision-2.png

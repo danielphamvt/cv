@@ -1303,6 +1303,10 @@ html[data-theme="light"] .timeline-content:hover .concurrent-badge {
     box-shadow: var(--shadow-sm);
 }
 
+.showcase-card.no-gallery {
+    grid-template-columns: 1fr;
+}
+
 .showcase-card:hover {
     border-color: var(--accent-primary);
     transform: translateY(-6px);
