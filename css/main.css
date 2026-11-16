@@ -381,65 +381,48 @@ h5 {
     align-items: center;
 }
 
-/* 3D Button */
-.btn-3d {
-    position: relative;
+/* Hero Buttons (Unified Flat Style) */
+.btn-primary,
+.btn-secondary {
     display: inline-flex;
     justify-content: center;
     align-items: center;
-    font-size: 1rem;
-    /* Match btn-primary size */
-    font-weight: 600;
-    color: var(--neutral-white);
-    text-decoration: none;
-    padding: 1rem 2rem;
-    /* Match btn-primary padding */
-    background: var(--accent-gradient);
-    border-radius: 50px;
-    transition: transform 0.1s;
-    box-shadow: 0px 6px 0px 0px var(--cyan-600),
-        /* Slightly reduced depth */
-        0px 15px 20px rgba(0, 0, 0, 0.4),
-        inset 0px 1px 0px rgba(255, 255, 255, 0.3);
-    transform: translateY(0);
     gap: 0.5rem;
-    text-transform: none;
-    /* Remove uppercase to match */
+    padding: 0.85rem 1.65rem;
+    border-radius: 10px;
+    font-size: 0.98rem;
+    font-weight: 600;
+    text-decoration: none;
+    transition: var(--transition);
     letter-spacing: normal;
-    border: 1px solid transparent;
-    /* To match border-box sizing */
-}
-
-.btn-3d:hover {
-    transform: translateY(-2px);
-    box-shadow: 0px 8px 0px 0px var(--cyan-600),
-        0px 20px 30px rgba(0, 0, 0, 0.5),
-        inset 0px 1px 0px rgba(255, 255, 255, 0.3);
-}
-
-.btn-3d:active {
-    transform: translateY(4px);
-    box-shadow: 0px 2px 0px 0px var(--cyan-600),
-        0px 5px 10px rgba(0, 0, 0, 0.4),
-        inset 0px 1px 0px rgba(255, 255, 255, 0.3);
 }
 
 .btn-primary {
-    padding: 1rem 2rem;
-    border-radius: 50px;
-    font-weight: 700;
-    text-decoration: none;
-    transition: var(--transition);
-    display: inline-flex;
-    align-items: center;
-    gap: 0.5rem;
-    background: rgba(var(--accent-rgb), 0.1);
+    background: var(--accent-primary);
+    color: var(--navy-950);
+    border: 1px solid var(--accent-primary);
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.18);
+}
+
+.btn-primary:hover {
+    background: var(--accent-secondary);
+    border-color: var(--accent-secondary);
+    transform: translateY(-2px);
+}
+
+html[data-theme="light"] .btn-primary {
+    color: var(--neutral-white);
+}
+
+.btn-secondary {
+    background: rgba(var(--accent-rgb), 0.08);
     color: var(--text-primary);
     border: 1px solid var(--border-color);
 }
 
-.btn-primary:hover {
-    background: rgba(var(--accent-rgb), 0.2);
+.btn-secondary:hover {
+    background: rgba(var(--accent-rgb), 0.16);
+    border-color: var(--accent-primary);
     transform: translateY(-2px);
 }
 
@@ -456,8 +439,7 @@ h5 {
 
 .social-links a:hover {
     color: var(--accent-primary);
-    transform: translateY(-5px) scale(1.1);
-    filter: drop-shadow(0 0 10px var(--accent-primary));
+    transform: translateY(-2px);
 }
 
 /* Hero Visual - Circular Profile */
@@ -696,7 +678,7 @@ h5 {
 }
 
 .stat-item:hover {
-    transform: translateY(-5px);
+    transform: translateY(-2px);
     background: rgba(255, 255, 255, 0.05);
     border-color: var(--accent-primary);
 }
@@ -763,7 +745,7 @@ h5 {
 }
 
 .edu-card-mini:hover {
-    transform: translateX(10px);
+    transform: translateX(4px);
     background: rgba(255, 255, 255, 0.05);
 }
 
@@ -844,7 +826,7 @@ h5 {
 
 .skill-category:hover {
     border-color: var(--accent-primary);
-    transform: translateY(-10px);
+    transform: translateY(-2px);
 }
 
 .skill-category:hover::after {
@@ -889,9 +871,7 @@ h5 {
 
 .tag:hover {
     background: var(--accent-primary);
-    color: var(--neutral-white);
-    transform: scale(1.05);
-    box-shadow: 0 5px 15px rgba(var(--accent-rgb), 0.3);
+    color: var(--navy-950);
     border-color: transparent;
 }
 
@@ -932,9 +912,9 @@ h5 {
 }
 
 .timeline-content:hover {
-    transform: translateY(-5px) scale(1.02);
+    transform: translateY(-2px);
     border-color: var(--accent-primary);
-    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+    box-shadow: 0 12px 28px rgba(0, 0, 0, 0.25);
 }
 
 .timeline-item:nth-child(odd) .timeline-content {
@@ -1190,9 +1170,9 @@ html[data-theme="light"] .timeline-content:hover .concurrent-badge {
 }
 
 .project-card:hover {
-    transform: translateY(-15px);
+    transform: translateY(-4px);
     border-color: var(--accent-primary);
-    box-shadow: 0 30px 60px rgba(0, 0, 0, 0.4);
+    box-shadow: 0 16px 36px rgba(0, 0, 0, 0.3);
 }
 
 .project-content {
@@ -1309,8 +1289,8 @@ html[data-theme="light"] .timeline-content:hover .concurrent-badge {
 
 .showcase-card:hover {
     border-color: var(--accent-primary);
-    transform: translateY(-6px);
-    box-shadow: 0 25px 50px rgba(0, 0, 0, 0.35);
+    transform: translateY(-3px);
+    box-shadow: 0 16px 36px rgba(0, 0, 0, 0.28);
 }
 
 .showcase-gallery {
@@ -1635,75 +1615,57 @@ html[data-theme="light"] .timeline-content:hover .concurrent-badge {
 .project-header-row {
     display: flex;
     justify-content: space-between;
-    align-items: flex-start;
-    margin-bottom: 1.5rem;
-}
-
-.project-header-row .project-icon {
-    margin-bottom: 0;
+    align-items: center;
+    gap: 0.75rem;
+    margin-bottom: 1rem;
 }
 
 .project-type-badge {
-    font-size: 0.75rem;
-    font-weight: 600;
-    text-transform: uppercase;
-    letter-spacing: 0.04em;
-    padding: 0.35rem 0.75rem;
-    border-radius: 50px;
+    font-size: 0.74rem;
+    font-weight: 500;
+    font-family: var(--font-code);
+    letter-spacing: 0.01em;
+    padding: 0.25rem 0.65rem;
+    border-radius: 6px;
     display: inline-flex;
     align-items: center;
     gap: 0.4rem;
     white-space: nowrap;
 }
 
-.badge-commercial {
-    background: rgba(16, 185, 129, 0.12);
-    color: #10b981;
-    border: 1px solid rgba(16, 185, 129, 0.28);
-}
-
-.badge-research {
-    background: rgba(139, 92, 246, 0.12);
-    color: #a78bfa;
-    border: 1px solid rgba(139, 92, 246, 0.28);
-}
-
-.badge-prototype {
-    background: rgba(59, 130, 246, 0.12);
-    color: #60a5fa;
-    border: 1px solid rgba(59, 130, 246, 0.28);
-}
-
+.badge-commercial,
+.badge-research,
+.badge-prototype,
 .badge-internal,
 .badge-tooling {
-    background: rgba(14, 165, 233, 0.12);
-    color: #38bdf8;
-    border: 1px solid rgba(14, 165, 233, 0.28);
+    background: rgba(255, 255, 255, 0.05);
+    color: var(--text-secondary);
+    border: 1px solid var(--border-color);
 }
 
-html[data-theme="light"] .badge-commercial {
-    background: rgba(16, 185, 129, 0.1);
-    color: #059669;
-    border-color: rgba(16, 185, 129, 0.3);
-}
-
-html[data-theme="light"] .badge-research {
-    background: rgba(139, 92, 246, 0.1);
-    color: #7c3aed;
-    border-color: rgba(139, 92, 246, 0.3);
-}
-
-html[data-theme="light"] .badge-prototype {
-    background: rgba(59, 130, 246, 0.1);
-    color: #2563eb;
-    border-color: rgba(59, 130, 246, 0.3);
-}
-
+html[data-theme="light"] .badge-commercial,
+html[data-theme="light"] .badge-research,
+html[data-theme="light"] .badge-prototype,
 html[data-theme="light"] .badge-internal,
 html[data-theme="light"] .badge-tooling {
-    background: rgba(14, 165, 233, 0.1);
-    color: #0284c7;
-    border-color: rgba(14, 165, 233, 0.3);
+    background: var(--navy-50);
+    color: var(--navy-700);
+    border: 1px solid var(--navy-200);
+}
+
+.project-demo-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+    font-size: 0.82rem;
+    font-weight: 600;
+    color: var(--accent-primary);
+    text-decoration: none;
+    transition: var(--transition-fast);
+}
+
+.project-demo-link:hover {
+    text-decoration: underline;
 }
 
 .project-card.is-hidden {
@@ -1864,7 +1826,7 @@ html[data-theme="light"] .badge-tooling {
 .cert-card:hover,
 .pub-card:hover {
     background: rgba(255, 255, 255, 0.05);
-    transform: translateX(10px);
+    transform: translateX(4px);
     border-color: var(--accent-primary);
 }
 
@@ -1959,10 +1921,10 @@ html[data-theme="light"] .badge-tooling {
 }
 
 .email-btn:hover {
-    background: var(--accent-gradient);
+    background: var(--accent-primary);
+    color: var(--navy-950);
     border-color: transparent;
-    transform: scale(1.05);
-    box-shadow: var(--accent-glow);
+    transform: translateY(-2px);
 }
 
 .social-connect {
@@ -1989,8 +1951,8 @@ html[data-theme="light"] .badge-tooling {
 .social-icon:hover {
     background: var(--bg-primary);
     color: var(--accent-primary);
-    transform: translateY(-10px) rotate(10deg);
-    box-shadow: 0 10px 20px rgba(255, 255, 255, 0.2);
+    transform: translateY(-3px);
+    border-color: var(--accent-primary);
 }
 
 .download-link {
@@ -2059,8 +2021,7 @@ html[data-theme="light"] .badge-tooling {
 }
 
 .scroll-top:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 10px 25px rgba(99, 150, 232, 0.5);
+    transform: translateY(-2px);
 }
 
 /* Footer */
